@@ -1,0 +1,31 @@
+/* für den globalen style */
+
+* {
+    margin: 0;
+}
+header {
+    background-color: blue;
+    color: white;
+}
+
+.content_wrapper {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+}
+
+.content_meals_selection {
+    background-color: bisque;
+    height: 100dvh;
+    width: 100%;
+}
+.content_basket {
+    width: 300px;
+    background-color: rgb(201, 123, 27);
+}
+
+footer {
+    background-color: brown;
+    color: white;
+}

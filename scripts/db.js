@@ -1,4 +1,4 @@
-// json Struktur
+// json Struktur muss immer zuerst geladen werden!!
 let myDishes = [
     {
         name: "Spagetti Carbonara",
