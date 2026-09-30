@@ -51,34 +51,35 @@ let myDishes = [
     },
 ];
 
-// let meals = {
+//Alternative
+let meals = {
 
-// mainDishes: [
-//     { title:'Pommes', price: 3, },
-//     { title:'Pommes', price: 3, },
-//     { title:'Pommes', price: 3, },
-//     { title:'Pommes', price: 3, },
-//     { title:'Pommes', price: 3, },
+mainDishes: [
+    { title:'Pommes', price: 3, },
+    { title:'Pommes', price: 3, },
+    { title:'Pommes', price: 3, },
+    { title:'Pommes', price: 3, },
+    { title:'Pommes', price: 3, },
 
-// ],
-// desserts: [
-//         { title:'Pommes', price: 3, },
-//     { title:'Eis', price: 3, },
-//     { title:'Pommes', price: 3, },
-//     { title:'Pommes', price: 3, },
-//     { title:'Pommes', price: 3, },
-// ],
-// drinks: [
-//         { title:'Pommes', price: 3, },
-//     { title:'Cola', price: 3, },
-//     { title:'Fanta', price: 3, },
-//     { title:'wassser', price: 3, },
-//     { title:'tee', price: 3, },
-// ]
-// }
+],
+desserts: [
+        { title:'Pommes', price: 3, },
+    { title:'Eis', price: 3, },
+    { title:'Pommes', price: 3, },
+    { title:'Pommes', price: 3, },
+    { title:'Pommes', price: 3, },
+],
+drinks: [
+        { title:'Pommes', price: 3, },
+    { title:'Cola', price: 3, },
+    { title:'Fanta', price: 3, },
+    { title:'wassser', price: 3, },
+    { title:'tee', price: 3, },
+]
+}
 
-// {
-//   "name": "John",
-//   "age": 30,
-//   "city": "New York"
-// }
+{
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}

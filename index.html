@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <script src="script.js/"></script>
-        <script src="./scripts.js/db.js"></script>
+        <script src="script.js"></script>
+        <script src="./scripts/db.js"></script>
         <script src="./scripts.js/templates.js"></script>
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="./styles.css/layout.css" />
         <link rel="stylesheet" href="./styles.css/fonts.css" />
         <link rel="stylesheet" href="./styles.css/components.css" />
     </head>
-    <body>
+    <body onload="init()">
         <header>
             <img
                 class="bestell-app-logo"
@@ -33,27 +33,39 @@
         </div>
         <div class="logo-evaluation">
             <h1>BurgerHouse</h1>
-            <img src="./assets/icons/Bewertung.png" alt="Bewertung Foto" />
+            <img src="./assets/icons/Bewertung.png" alt="Bewertungen Foto" />
         </div>
         <p class="description-shop">
             The best of Burgers, Pizza, and Greens, all in one great place.
         </p>
+        <div></div>
         <div class="content_wrapper">
-            <section class="content_meals_selection">
-                .content_meals_selection
-                <div class="test_content">
-                    .test_content <br />hier ist der Inhalt für Bestellungen
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Iste velit eum saepe assumenda obcaecati architecto, ipsa
-                    aliquam dolorum repudiandae quibusdam nisi iusto atque
-                    distinctio mollitia placeat quis quasi alias provident?
-                </div>
-            </section>
+            <main>
+                <section class="meals-section">
+                    <h1>Gerichte</h1>
+                    <div id="meals"></div>
+                </section>
+            </main>
             <section class="content_basket">
                 content_basket
                 <div class="basket">basket</div>
             </section>
         </div>
-        <footer>footer</footer>
+
+        <footer>
+            <div class="footer">
+                <div class="footer-tags">
+                    <div class="copyright">
+                        <img
+                            src="./assets/icons/copyright.svg"
+                            alt="Copyright Bild"
+                        />
+                        <p>2025 BurgerHouse</p>
+                    </div>
+                    <p>Imprint</p>
+                    <p>Cookie Preferences</p>
+                </div>
+            </div>
+        </footer>
     </body>
 </html>

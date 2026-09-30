@@ -8,20 +8,25 @@ header {
     display: flex;
     height: 128px;
     justify-content: space-between;
-    background: #E76C1F;
+    background: #e76c1f;
     color: white;
     align-items: center;
     padding-left: 60px;
     padding-right: 60px;
 }
-.header-picture > img{
+.header-picture > img {
     width: 100%;
 }
-.burger-logo{
+main {
+    display: flex;
+    max-width: 1440px;
+    margin: auto;
+}
+.burger-logo {
     display: flex;
     justify-content: center;
     margin-top: -130px;
-    
+
     width: 200;
     height: 200px;
 }
@@ -34,16 +39,17 @@ header {
     height: 60px;
     width: 60px;
 }
-.logo-evaluation{
+.logo-evaluation {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 26px;
-
+    padding: 20px;
 }
-.description-shop{
+.description-shop {
     display: flex;
     justify-content: center;
+    padding-bottom: 50px;
 }
 
 .content_wrapper {
@@ -78,13 +84,46 @@ header {
 }
 .basket {
     width: 100%;
-    height: 400px;
+    min-height: 400px;
     background-color: darkgreen;
     position: sticky;
     top: 8px;
 }
-
 footer {
-    background-color: brown;
+    /* display: flex; */
+    /* width: 100%; */
+}
+.footer {
+    width: 100%;
+    height: 128px;
+    background-color: #e76c1f;
     color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    > img {
+        display: flex;
+        flex-direction: row;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.footer-tags {
+    display: flex;
+    height: 24px;
+    width: 530%;
+    justify-content: center;
+    gap: 72px;
+    translate: 0 20px;
+    /* margin-top: 30px; */
+    align-items: center;
+}
+.copyright {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
 }
