@@ -8,19 +8,22 @@ header {
     display: flex;
     height: 128px;
     justify-content: space-between;
-    background: #e76c1f;
+    background-color: #e76c1f;
     color: white;
     align-items: center;
     padding-left: 60px;
     padding-right: 60px;
 }
+.bestell-app-logo {
+    height: 38px;
+    width: 92px;
+}
+.menu-bar {
+    height: 60px;
+    width: 60px;
+}
 .header-picture > img {
     width: 100%;
-}
-main {
-    display: flex;
-    max-width: 1440px;
-    margin: auto;
 }
 .burger-logo {
     display: flex;
@@ -29,15 +32,6 @@ main {
 
     width: 200;
     height: 200px;
-}
-
-.bestell-app-logo {
-    height: 38px;
-    width: 92px;
-}
-.menu-bar {
-    height: 60px;
-    width: 60px;
 }
 .logo-evaluation {
     display: flex;
@@ -51,7 +45,6 @@ main {
     justify-content: center;
     padding-bottom: 50px;
 }
-
 .content_wrapper {
     display: flex;
     flex-direction: row;
@@ -59,24 +52,31 @@ main {
 
     justify-content: space-evenly;
 }
+main {
+    display: flex;
+    max-width: 1440px;
+    margin: auto;
+}
 
-.content_meals_selection {
-    background-color: bisque;
-
+.meals-section {
+    flex: 1;
+    padding: 10px;
+    /* background-color: bisque;
     width: calc(100% - 300px);
     padding: 16px;
     border: 4px solid rgb(9, 237, 66);
-    flex-grow: 1;
+    flex-grow: 1; */
 }
-.test_content {
-    padding: 32px;
-    font-size: 48px;
-    height: 1500px;
-    background-color: aqua;
-    flex-grow: 1;
+.dish{
+    background-color: white;
+
+
+
 }
-.content_basket {
-    width: 300px;
+
+
+.content-basket {
+    width: 100%;
     background-color: rgb(201, 123, 27);
     padding: 16px;
     border: 4px solid rgb(237, 9, 127);

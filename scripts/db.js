@@ -1,55 +1,55 @@
 // json Struktur muss immer zuerst geladen werden!!
-let myDishes = [
-    {
-        name: "Spagetti Carbonara",
-        price: 12.99,
-        description:
-            "Cermige Pasta mit Speck und Parmesan, verfeinert mit    ....",
-        amount: 0, //array für basket
-        image: "./assets/img",
-    },
-    {
-        name: "Vegetarische Lasagne",
-        price: 10.5,
-        description:
-            "Herzhafte Lasagne mit Schichten aus Gemüse, Tomaten   ......",
-        amount: 0,
-    },
-    {
-        name: "Gegrilltees Hähnchen mit Quinoa",
-        price: 14.2,
-        description:
-            "Saftiges Hähnchenbrustfilet serviert mit einem Quinoa  .....",
-        amount: 0,
-    },
-    {
-        name: "Thai Curry mit Garnelen",
-        price: 13.75,
-        description: "Ein scharfes aromatisches Curry mit Kokosmilch   ....",
-        amount: 0,
-    },
-    {
-        name: "Rumpsteak",
-        price: 32.0,
-        description:
-            "Saftig gegrilltes Rumpsteak mit einer feinen Kräuterkruste, serviert an einer hausgemachten, tiefen Rotwein-Schalotten-Reduktion, begleitet von goldbraun gerösteten Rosmarinkartoffeln und knackigem Marktgemüse.",
-        amount: 0,
-    },
-    {
-        name: "Rumpsteak",
-        price: 32.0,
-        description:
-            "Saftig gegrilltes Rumpsteak mit einer feinen Kräuterkruste, serviert an einer hausgemachten, tiefen Rotwein-Schalotten-Reduktion, begleitet von goldbraun gerösteten Rosmarinkartoffeln und knackigem Marktgemüse",
-        amount: 0,
-    },
-    {
-        name: "Island-Lachs",
-        price: 38.0,
-        description:
-            " Auf der Haut kross gebratenes Filet vom Island-Lachs, gebettet auf einem cremigen, mit feinem Parmesan verfeinertem Safran-Risotto, umspielt von einer leichten Zitronengras-Schaumsauce",
-        amount: 0,
-    },
-];
+// let myDishes = [
+//     {
+//         name: "Spagetti Carbonara",
+//         price: 12.99,
+//         description:
+//             "Cermige Pasta mit Speck und Parmesan, verfeinert mit    ....",
+//         amount: 0, //array für basket
+//         image: "./assets/img",
+//     },
+//     {
+//         name: "Vegetarische Lasagne",
+//         price: 10.5,
+//         description:
+//             "Herzhafte Lasagne mit Schichten aus Gemüse, Tomaten   ......",
+//         amount: 0,
+//     },
+//     {
+//         name: "Gegrilltees Hähnchen mit Quinoa",
+//         price: 14.2,
+//         description:
+//             "Saftiges Hähnchenbrustfilet serviert mit einem Quinoa  .....",
+//         amount: 0,
+//     },
+//     {
+//         name: "Thai Curry mit Garnelen",
+//         price: 13.75,
+//         description: "Ein scharfes aromatisches Curry mit Kokosmilch   ....",
+//         amount: 0,
+//     },
+//     {
+//         name: "Rumpsteak",
+//         price: 32.0,
+//         description:
+//             "Saftig gegrilltes Rumpsteak mit einer feinen Kräuterkruste, serviert an einer hausgemachten, tiefen Rotwein-Schalotten-Reduktion, begleitet von goldbraun gerösteten Rosmarinkartoffeln und knackigem Marktgemüse.",
+//         amount: 0,
+//     },
+//     {
+//         name: "Rumpsteak",
+//         price: 32.0,
+//         description:
+//             "Saftig gegrilltes Rumpsteak mit einer feinen Kräuterkruste, serviert an einer hausgemachten, tiefen Rotwein-Schalotten-Reduktion, begleitet von goldbraun gerösteten Rosmarinkartoffeln und knackigem Marktgemüse",
+//         amount: 0,
+//     },
+//     {
+//         name: "Island-Lachs",
+//         price: 38.0,
+//         description:
+//             " Auf der Haut kross gebratenes Filet vom Island-Lachs, gebettet auf einem cremigen, mit feinem Parmesan verfeinertem Safran-Risotto, umspielt von einer leichten Zitronengras-Schaumsauce",
+//         amount: 0,
+//     },
+// ];
 
 //Alternative
 let meals = {
@@ -78,8 +78,19 @@ drinks: [
 ]
 }
 
-{
-  "name": "John",
-  "age": 30,
-  "city": "New York"
-}
+let meals2 = [
+    { title:'Pommes', price: 3, categoryy: 'mainDishes' },
+     { title:'Burger', price: 6, categoryy: 'mainDishes' },
+ { title:'Pizza', price: 12, categoryy: 'mainDishes' },
+ { title:'Coca Cola', price: 2, categoryy: 'drinks' },
+ { title:'Fanta', price: 2, categoryy: 'drinks' },
+ { title:'Eis', price: 3, categoryy: 'desserts' },
+
+
+]
+
+// {
+//   "name": "John",
+//   "age": 30,
+//   "city": "New York"
+// }
