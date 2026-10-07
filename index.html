@@ -4,13 +4,13 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <script src="script.js"></script>
         <script src="./scripts/db.js"></script>
         <script src="./scripts/templates.js"></script>
+        <script src="script.js"></script>
         <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="./styles.css/layout.css" />
-        <link rel="stylesheet" href="./styles.css/fonts.css" />
-        <link rel="stylesheet" href="./styles.css/components.css" />
+        <!-- <link rel="stylesheet" href="./styles/layout.css" /> -->
+        <!-- <link rel="stylesheet" href="./styles/fonts.css" /> -->
+        <!-- <link rel="stylesheet" href="./styles/components.css" /> -->
     </head>
     <body onload="init()">
         <header>
@@ -43,12 +43,16 @@
             <main>
                 <section class="meals-section">
                     <h1>Gerichte</h1>
-                    <div id="meals">gericht</div>
+                    <!-- meals(Gerichte) werden hier über js dynamisch eingefügt -->
+                    <div id="myDishes"></div>
                 </section>
             </main>
+            <!-- Warenkorb -->
             <section class="content-basket">
                 content_basket
-                <div class="basket">basket</div>
+                <div class="basket" id="basket" >
+                    <!-- Warenkorb wird hier dynamisch eingefügt -->
+                    Warenkorb ist leer</div>
             </section>
         </div>
 

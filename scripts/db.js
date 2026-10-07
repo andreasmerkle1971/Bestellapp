@@ -51,11 +51,11 @@
 //     },
 // ];
 
-//Alternative
+Alternative
 let meals = {
 
 mainDishes: [
-    { title:'Pommes', price: 3, },
+    { title:'Veggi mushroom black burger', price: 16.9, description: 'Mixed green salad, Tomatoes, Edamame, Mushrooms',  },
     { title:'Pommes', price: 3, },
     { title:'Pommes', price: 3, },
     { title:'Pommes', price: 3, },
@@ -63,7 +63,7 @@ mainDishes: [
 
 ],
 desserts: [
-        { title:'Pommes', price: 3, },
+    { title:'Pommes', price: 3, },
     { title:'Eis', price: 3, },
     { title:'Pommes', price: 3, },
     { title:'Pommes', price: 3, },
@@ -78,19 +78,10 @@ drinks: [
 ]
 }
 
-let meals2 = [
-    { title:'Pommes', price: 3, categoryy: 'mainDishes' },
-     { title:'Burger', price: 6, categoryy: 'mainDishes' },
- { title:'Pizza', price: 12, categoryy: 'mainDishes' },
- { title:'Coca Cola', price: 2, categoryy: 'drinks' },
- { title:'Fanta', price: 2, categoryy: 'drinks' },
- { title:'Eis', price: 3, categoryy: 'desserts' },
-
-
-]
-
-// {
-//   "name": "John",
-//   "age": 30,
-//   "city": "New York"
-// }
+// let meals2 = [
+//     { title:'Pommes', price: 3, categoryy: 'mainDishes' },
+//      { title:'Burger', price: 6, categoryy: 'mainDishes' },
+//  { title:'Pizza', price: 12, categoryy: 'mainDishes' },
+//  { title:'Coca Cola', price: 2, categoryy: 'drinks' },
+//  { title:'Fanta', price: 2, categoryy: 'drinks' },
+//  { title:'Eis', price: 3, categoryy: 'desserts' },
