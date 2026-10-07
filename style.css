@@ -4,7 +4,22 @@
     margin: 0;
     /* padding: 0; */
     box-sizing: border-box;
+        margin: 0px;
+    scroll-behavior: smooth;
+    position: relative;
 }
+
+html, body{
+    height: 100%;
+}
+body{
+display: flex;
+flex-direction: column;
+}
+
+
+
+
 header {
     display: flex;
     height: 128px;
@@ -52,15 +67,18 @@ header {
     flex-direction: row;
     flex-grow: 1;
     max-width: 1440px;
+    width: 100%;
     margin: 0 auto;
     padding: 0px 20px 50px 20px;
+    flex: 1;
 
     /* justify-content: space-evenly; */
 }
 main {
+    display: flex;
     flex: 1;
-    /* display: flex;
-    max-width: 1440px; */
+    max-width: 1440px;
+    flex-direction: column;
     /* margin: auto; */
 }
 
