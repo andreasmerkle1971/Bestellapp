@@ -14,15 +14,17 @@ function renderMeals() {
         </div>`;
 
         for (const meal of myDishes[category]) {
-            document.getElementById(category + "-container").innerHTML +=
+            document.getElementById(category + "-container").innerHTML += 
                 /*html*/ `
         <div class="dish" id="${meal.name}-container">
-        <img src="${meal.image}" alt="${meal.name}">
-        <div>
-        <p>${meal.name}</p>
-        <p>${meal.description}</p>
-        <p>${meal.price}</p>
-        <div>
+                <div>
+                    <img src="${meal.image}" alt="${meal.name}">
+                </div>
+                <div>
+                    <h3>${meal.name}</h3>
+                    <p>${meal.description}</p>
+                    <p class="price">${formatPrice(meal.price)}</p>
+                </div>
         </div>`;
         }
     }

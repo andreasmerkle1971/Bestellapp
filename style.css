@@ -71,6 +71,7 @@ header {
     margin: 0 auto;
     padding: 0px 20px 50px 20px;
     flex: 1;
+    gap: 20px;
 
     /* justify-content: space-evenly; */
 }
@@ -97,8 +98,16 @@ main {
     margin-bottom: 12px;
     display: flex;
     gap: 1px;
-    /* color: blue; */
-    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+   img {
+        width: 100px;
+        height: 100px;
+    }
+}
+.price {
+
+
 }
 
 .content-basket {
