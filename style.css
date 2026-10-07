@@ -1,4 +1,4 @@
-/* für den globalen style */
+/* für den globalen style und Struktur */
 
 * {
     margin: 0;
@@ -93,11 +93,12 @@ main {
     flex-grow: 1; */
 }
 .dish {
-    background-color: rgb(80, 14, 14);
+    background-color: rgb(206, 159, 159);
     margin-bottom: 12px;
     display: flex;
     gap: 1px;
-    color: blue;
+    /* color: blue; */
+    flex-direction: column;
 }
 
 .content-basket {
