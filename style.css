@@ -83,15 +83,25 @@ main {
     /* margin: auto; */
 }
 
-.meals-section {
-    width: 100%;
-    /* flex: 1; */
-    /* padding: 10px; */
-    /* background-color: bisque;
-    width: calc(100% - 300px);
-    padding: 16px;
-    border: 4px solid rgb(9, 237, 66);
-    flex-grow: 1; */
+.meal-category {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin-bottom: 40px;
+    gap: 16px;
+    background-color: chocolate;
+    align-items: flex-start;
+    img{
+        width: 90px;
+        height: 90px;
+        display: flex;
+        transform: translateY(-50px);
+    }
+    h2{
+        color: #FFFFFF;
+
+    }
 }
 .dish {
     background-color: rgb(206, 159, 159);

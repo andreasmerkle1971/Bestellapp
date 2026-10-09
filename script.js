@@ -9,8 +9,12 @@ function renderMeals() {
         // Die Schleife geht durch alle Kathegorien in einem Objekt, in jedem Durchgang erhält category den Namen der Kategorie.
         document.getElementById("myDishes").innerHTML +=
             // sucht myDishes nimmt HTML Element und fügt was neues hinzu
-            `<div class="meal-category" id="${category}-container"> 
-            <h2>${category}</h2>
+            `
+            <div  id="${category}-container"> 
+            <div class="meal-category">
+            <img src="./assets/icons/burger.png" alt="foto burger">
+            <h2 >${category}</h2>
+            </div>
         </div>`;
 
         for (const meal of myDishes[category]) {
@@ -29,3 +33,4 @@ function renderMeals() {
         }
     }
 }
+
