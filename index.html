@@ -8,6 +8,7 @@
         <script src="./scripts/templates.js"></script>
         <script src="script.js"></script>
         <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="./styles/fonts.css" />
         <!-- <link rel="stylesheet" href="./styles/layout.css" /> -->
         <!-- <link rel="stylesheet" href="./styles/fonts.css" /> -->
         <!-- <link rel="stylesheet" href="./styles/components.css" /> -->
@@ -32,17 +33,16 @@
             <img src="./assets/icons/Burger_logo.svg" alt="Burger Logo" />
         </div>
         <div class="logo-evaluation">
-            <h1>BurgerHouse</h1>
+            <h1>
+                Burger<span class="dark">House</span></h1>
             <img src="./assets/icons/Bewertung.svg" alt="Bewertungen Foto" />
         </div>
         <p class="description-shop">
             The best of Burgers, Pizza, and Greens, all in one great place.
         </p>
         <div class="content_wrapper">
-            
             <main>
                 <section class="meals-section">
-                   
                     <!-- meals(Gerichte) werden hier über js dynamisch eingefügt -->
                     <div id="myDishes"></div>
                 </section>
@@ -50,9 +50,10 @@
             <!-- Warenkorb -->
             <section class="content-basket">
                 content_basket
-                <div class="basket" id="basket" >
+                <div class="basket" id="basket">
                     <!-- Warenkorb wird hier dynamisch eingefügt -->
-                    Warenkorb ist leer</div>
+                    Warenkorb ist leer
+                </div>
             </section>
         </div>
 
