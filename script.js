@@ -5,21 +5,30 @@ function init() {
 function renderMeals() {
     // Declarierung der Funktion render Meals
     console.log(myDishes); // Prüfung der funktion, ob die Daten überhaupt da sind
+
+    const categoryIcons = {
+        "Burger & Sandwiches": "./assets/icons/Burger.svg",
+        "Pizza (30cm)": "./assets/icons/Pizza.svg",
+        "Salad": "./assets/icons/Salad.svg"
+    }
     for (const category in myDishes) {
         // Die Schleife geht durch alle Kathegorien in einem Objekt, in jedem Durchgang erhält category den Namen der Kategorie.
+        
+        const iconPath = categoryIcons[category];
+        const categoryId = category.replace(/[^a-zA-Z0-9]/g, '-');
         document.getElementById("myDishes").innerHTML +=
             // sucht myDishes nimmt HTML Element und fügt was neues hinzu
             `
-            <div  id="${category}-container"> 
+            <div  id="${categoryId}-container"> 
             <div class="meal-category">
-            <img src="./assets/icons/Burger.png" alt="foto burger">
+            <img src="${iconPath}" alt="foto ${category}">
             <h2 >${category}</h2>
             
             </div>
         </div>`;
 
         for (const meal of myDishes[category]) {
-            document.getElementById(category + "-container").innerHTML +=
+            document.getElementById(categoryId + "-container").innerHTML +=
                 /*html*/ `
     <div class="meal-section">
         <div class="dish" id="${meal.name}-container">
