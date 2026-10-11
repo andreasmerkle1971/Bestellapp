@@ -4,7 +4,7 @@
 
 let myDishes = {
     "Burger & Sandwiches": [
-     { name:'Veggie mushroom black burger', price: 16.9, description: 'Mixed green salad, Tomatoes, Edamame, Mushrooms', amount: 0, image: `../assets/img/Veggi Burger.svg   ` },
+     { name:'Veggie mushroom black burger', price: 16.9, description: 'Mixed green salad, Tomatoes, Edamame, Mushrooms', amount: 0, image: `./assets/img/Veggi Burger.svg` },
      { name:'All meat burger', price: 15.9, description: 'Beef, Bacon, Dill pickles, Smoked cheese, Ketchup, BBQ souse', amount: 0, image: `./assets/img/All Meat Burger.svg` },
      { name:'Beef red burger', price: 14.9, description: 'Beef, Cheese, Tomatoes, Lettuce, Onion', amount: 0, image: `./assets/img/Beef Red Burger.svg` },
      { name:'BIg chicken burger', price: 15.9, description: 'Chicken, Cheese, Tomatoes, Lettuce, Onion, Bell pepper', amount: 0, image: `./assets/img/Chicken Burger.svg` },
