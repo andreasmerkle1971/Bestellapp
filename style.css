@@ -3,7 +3,6 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    margin: 0px;
     scroll-behavior: smooth;
     position: relative;
 }
@@ -11,6 +10,7 @@
 html,
 body {
     height: 100%;
+    overflow-x: hidden;
 }
 body {
     display: flex;
@@ -76,8 +76,6 @@ header {
 }
 
 .description-shop {
-    display: flex;
-    justify-content: center;
     padding-bottom: 50px;
     color: #363534;
     font-family: Palanquin Dark;
@@ -86,36 +84,46 @@ header {
     text-align: center;
 }
 .content_wrapper {
+    max-width: 1440px;
     display: flex;
     flex-direction: row;
     flex-grow: 1;
-    max-width: 1440px;
     width: 100%;
     margin: 0 auto;
     flex: 1;
     gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+
 }
 main {
     display: flex;
     flex: 1;
-    max-width: 1440px;
     flex-direction: column;
+    max-width: 1440px;
+
 }
 
 .meal-category {
-    width: 100%;
     height: 60px;
     display: flex;
     flex-direction: row;
-    padding: 10px;
     margin-bottom: 40px;
+    position: relative;
+    left:50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     gap: 16px;
     background-color: chocolate;
     align-items: center;
+    justify-content: flex-start;
+    padding-left: 140px;
     img {
         width: 90px;
         height: 90px;
         display: flex;
+            margin-left: 167px;
         transform: translateY(-5px);
     }
     h2 {
@@ -130,6 +138,8 @@ main {
 
 .meal-section{
     padding: 0px 20px 10px 20px;
+        margin-left: 119px;
+
 
 
 
@@ -165,6 +175,7 @@ main {
     display: flex;
     flex: 1;
     padding-right: 25px;
+    gap: 16px;
 }
 
 .order {
@@ -200,21 +211,20 @@ main {
 
 .content-basket {
     width: 300px;
-    background-color: rgb(201, 123, 27);
     padding: 16px;
-    border: 4px solid rgb(237, 9, 127);
     flex-shrink: 0;
-    height: fit-content;
+    align-self: flex-start; 
 }
 .basket {
+    position: sticky;
+    top:20px;
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: left;
+    justify-content: flex-start;
     width: 100%;
     min-height: 200px;
     background-color: darkgreen;
-    position: sticky;
-    top: 8px;
     box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
     padding: 16px;
