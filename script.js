@@ -76,8 +76,8 @@ function renderBasket() {
         basketContainer.innerHTML += `
         <div>
         <span>${dish.name}</span>
-        <span>${dish.Price}</span>
-        <span>${dish.amount}</span>
+        <span>${formatPrice(dish.price)}</span>
+        <span>amount: ${dish.amount}</span>
         </div>
         `;
     }
