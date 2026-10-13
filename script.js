@@ -43,7 +43,7 @@ function renderMeals() {
                         </div>
                         <div class="order">
                         <p class="price">${formatPrice(meal.price)}</p>
-                        <button onclick="addToBasket()">Add to basket</button>
+                        <button onclick="addToBasket('${category}', '${meal.name}')">Add to basket</button>
                         </div>
                         </div>
         </div>
@@ -53,13 +53,13 @@ function renderMeals() {
 }
 
 function addToBasket(category, name) {
-    const meal = myDishes[category].find((dish) => myDishes.name === name); // sucht aus dem Json
-    const existingMeal = basket.find((dish) => myDishes.name === name); //prüft, ob schon vorhanden
+    const meal = myDishes[category].find((dish) => dish.name === name); // sucht aus dem Json
+    const existingMeal = basketDishes.find((dish) => dish.name === name); //prüft, ob schon vorhanden
 
-    if ( existingMeal){
+    if (existingMeal){
         existingMeal.amount++; // Anzahl im Warenkorb wird erhöht
     }else {
-        basketDishes.push({ amount: 1, ...meal }); // Meal wird neu hinzugefügt
+        basketDishes.push({ ...meal, amount: 1 }); // Meal wird neu hinzugefügt
    }
 
     renderBasket();
@@ -67,19 +67,22 @@ function addToBasket(category, name) {
 
 
 function renderBasket() {
-    document.getElementById('basket').innerHTML = '';
 
-        for (const basket of basketDishes) {
-        document.getElementById('basket').innerHTML += `
+    const basketContainer = document.getElementById('basket')
+    document.getElementById('basket').innerHTML = '';
+    basketContainer.innerHTML = ''; // Container leeren
+
+        for (const dish of basketDishes) {
+        basketContainer.innerHTML += `
         <div>
-        <span>${basket.name}</span>
-        <span>${basket.price}</span>
-        <span>${basket.amount}</span>
+        <span>${dish.name}</span>
+        <span>${dish.Price}</span>
+        <span>${dish.amount}</span>
         </div>
         `;
     }
+}
 //     // Declarierung der Funktion render Basket
-   }
 //     for (const category in myDishes) {
 //         // Die Schleife geht durch alle Kathegorien in einem Objekt, in jedem Durchgang erhält category den Namen der Kategorie.
         
