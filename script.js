@@ -69,19 +69,55 @@ function addToBasket(category, name) {
 function renderBasket() {
 
     const basketContainer = document.getElementById('basket')
-    document.getElementById('basket').innerHTML = '';
-    basketContainer.innerHTML = ''; // Container leeren
+    document.getElementById('basket').innerHTML = ''; // Container leeren
+    basketContainer.innerHTML = ''; // ebenfalls Container leeren
+
+    if (basketDishes.length === 0){ // leerer Warenkorb 
+basketContainer.innerHTML = '<div>Der Warenkorb ist leer.</div>'
+return;
+
+
+
+    }
+
+
+
+
+
+    basketContainer.innerHTML = '<h2>Your Basket</h2>'; // Überschrift der Bestellung
 
         for (const dish of basketDishes) {
         basketContainer.innerHTML += `
         <div>
+        <span>${dish.amount} x</span>
         <span>${dish.name}</span>
         <span>${formatPrice(dish.price)}</span>
-        <span>amount: ${dish.amount}</span>
         </div>
         `;
     }
+    const totalPrice = calcPrice();
+        basketContainer.innerHTML += `
+        <div class="basket-total">
+        <hr>  <!-- Trennlinie -->
+        <div class="total-price">
+        <strong>Gesamtpreis:</strong>
+        <strong>${formatPrice(totalPrice)}</strong>
+        </div>
+        </div>`;
 }
+
+
+function calcPrice(){
+    let total = 0;
+    for (const dish of basketDishes) {
+        total += dish.price * dish.amount;
+    }
+    return total;
+
+
+}
+
+
 //     // Declarierung der Funktion render Basket
 //     for (const category in myDishes) {
 //         // Die Schleife geht durch alle Kathegorien in einem Objekt, in jedem Durchgang erhält category den Namen der Kategorie.
