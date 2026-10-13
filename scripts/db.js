@@ -30,3 +30,5 @@ let myDishes = {
     ]
     
 };
+
+let basketDishes = [];
