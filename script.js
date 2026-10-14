@@ -9,13 +9,13 @@ function renderMeals() {
     const categoryIcons = {
         "Burger & Sandwiches": "./assets/icons/Burger.svg",
         "Pizza (30cm)": "./assets/icons/Pizza.svg", //span entfernen, wenn keine Lösung
-        "Salad": "./assets/icons/Salad.svg"
-    }
+        Salad: "./assets/icons/Salad.svg",
+    };
     for (const category in myDishes) {
         // Die Schleife geht durch alle Kathegorien in einem Objekt, in jedem Durchgang erhält category den Namen der Kategorie.
-        
+
         const iconPath = categoryIcons[category];
-        const categoryId = category.replace(/[^a-zA-Z0-9]/g, '-'); // damit das Objekt korrekt angezeigt wird mit Sonderzeichen
+        const categoryId = category.replace(/[^a-zA-Z0-9]/g, "-"); // damit das Objekt korrekt angezeigt wird mit Sonderzeichen
         document.getElementById("myDishes").innerHTML +=
             // sucht myDishes nimmt HTML Element und fügt was neues hinzu
             `
@@ -56,82 +56,98 @@ function addToBasket(category, name) {
     const meal = myDishes[category].find((dish) => dish.name === name); // sucht aus dem Json
     const existingMeal = basketDishes.find((dish) => dish.name === name); //prüft, ob schon vorhanden
 
-    if (existingMeal){
+    if (existingMeal) {
         existingMeal.amount++; // Anzahl im Warenkorb wird erhöht
-    }else {
+    } else {
         basketDishes.push({ ...meal, amount: 1 }); // Meal wird neu hinzugefügt
-   }
+    }
 
     renderBasket();
 }
 
-
 function renderBasket() {
+    const basketContainer = document.getElementById("basket");
+    document.getElementById("basket").innerHTML = ""; // Container leeren
+    // basketContainer.innerHTML = ""; // ebenfalls Container leeren
 
-    const basketContainer = document.getElementById('basket')
-    document.getElementById('basket').innerHTML = ''; // Container leeren
-    basketContainer.innerHTML = ''; // ebenfalls Container leeren
-
-    if (basketDishes.length === 0){ // leerer Warenkorb 
-basketContainer.innerHTML = '<div>Der Warenkorb ist leer.</div>'
-return;
-
-
-
+    if (basketDishes.length === 0) {
+        // leerer Warenkorb
+        basketContainer.innerHTML = "<div>Der Warenkorb ist leer.</div>";
+        return;
     }
 
+    basketContainer.innerHTML = "<h2>Your Basket</h2>"; // Überschrift der Bestellung
 
-
-
-
-    basketContainer.innerHTML = '<h2>Your Basket</h2>'; // Überschrift der Bestellung
-
-        for (const dish of basketDishes) {
+    for (const dish of basketDishes) {
         basketContainer.innerHTML += `
         <div>
         <span>${dish.amount} x</span>
         <span>${dish.name}</span>
         <span>${formatPrice(dish.price)}</span>
+        <button onclick="decreaseAmount('${dish.name}')">-</button>
+        <span>${dish.amount} x<span>
+        <button onclick="increaseAmount('${dish.name}')">+</button>
         </div>
         `;
     }
     const totalPrice = calcPrice();
-        basketContainer.innerHTML += `
+    basketContainer.innerHTML += `
         <div class="basket-total">
+        <div>Subtotal: ${formatPrice(totalPrice)}</div>
+         <div>Delivery fee: 4,99€</div>
+         <br>
         <hr>  <!-- Trennlinie -->
+        <br>
         <div class="total-price">
-        <strong>Gesamtpreis:</strong>
-        <strong>${formatPrice(totalPrice)}</strong>
+        <strong>Total:</strong>
+        <strong>${formatPrice(totalPrice + 4.99)}</strong>
         </div>
         </div>`;
 }
 
-
-function calcPrice(){
+function calcPrice() {
     let total = 0;
     for (const dish of basketDishes) {
         total += dish.price * dish.amount;
     }
     return total;
-
-
 }
 
 
+function increaseAmount(name){// erhöhen der Anzahl
+    const dish = basketDishes.find((dish) => dish.name === name);
+    if (dish) {
+        dish.amount++;
+    }
+    renderBasket();
+}
+
+function decreaseAmount(name){// verringern der Anzahl
+        const dish = basketDishes.find((dish) => dish.name === name);
+            if (dish) {
+            dish.amount--;
+            if (dish.amount ===0){
+                basketDishes = basketDishes.filter((d) => d.name !== name);
+            }
+        }
+    renderBasket();
+
+    
+}
 //     // Declarierung der Funktion render Basket
 //     for (const category in myDishes) {
 //         // Die Schleife geht durch alle Kathegorien in einem Objekt, in jedem Durchgang erhält category den Namen der Kategorie.
-        
+
 //         const iconPath = categoryIcons[category];
 //         const categoryId = category.replace(/[^a-zA-Z0-9]/g, '-');
 //         document.getElementById("myDishes").innerHTML +=
 //             // sucht myDishes nimmt HTML Element und fügt was neues hinzu
 //             `
-//             <div  id="${categoryId}-container"> 
+//             <div  id="${categoryId}-container">
 //             <div class="meal-category">
 //             <img src="${iconPath}" alt="foto ${category}">
 //             <h2 >${category}</h2>
-            
+
 //             </div>
 //         </div>`;
 
@@ -145,10 +161,10 @@ function calcPrice(){
 //                 </div>
 //                 <div class="meal-text">
 //                 <div>
-                    
+
 //                         <h3>${meal.name}</h3>
 //                         <p>${meal.description}</p>
-                    
+
 //                         </div>
 //                         <div class="order">
 //                         <p class="price">${formatPrice(meal.price)}</p>
