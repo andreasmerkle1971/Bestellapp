@@ -1,5 +1,3 @@
-// wiederverwendbare HTML Strukturen
-const formatierterPrice = formatPrice(meal.price);
 
 function formatPrice(price) {
     return new Intl.NumberFormat("de-DE", {
