@@ -31,4 +31,4 @@ let myDishes = {
     
 };
 
-let basketDishes = [];
+const  basketDishes = [];

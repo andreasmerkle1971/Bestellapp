@@ -1,3 +1,7 @@
+const DELIVERY_FEE = 4.99;
+
+
+
 function init() {
     // Bilder aus Array holen und im HTML aufbauen
     renderMeals();
@@ -72,7 +76,7 @@ function renderBasket() {
 
     if (basketDishes.length === 0) {
         // leerer Warenkorb
-        basketContainer.innerHTML = "<div>Der Warenkorb ist leer.</div>";
+        basketContainer.innerHTML = "<div>Your basket is empty</div>";
         return;
     }
 
@@ -81,12 +85,12 @@ function renderBasket() {
     for (const dish of basketDishes) {
         basketContainer.innerHTML += `
         <div>
-        <span>${dish.amount} x</span>
         <span>${dish.name}</span>
-        <span>${formatPrice(dish.price)}</span>
+        <br>
         <button onclick="decreaseAmount('${dish.name}')">-</button>
-        <span>${dish.amount} x<span>
+        <span>${dish.amount} x</span>
         <button onclick="increaseAmount('${dish.name}')">+</button>
+        <span>${formatPrice(dish.price)}</span>
         </div>
         `;
     }
@@ -94,14 +98,15 @@ function renderBasket() {
     basketContainer.innerHTML += `
         <div class="basket-total">
         <div>Subtotal: ${formatPrice(totalPrice)}</div>
-         <div>Delivery fee: 4,99€</div>
+         <div>Delivery fee: ${formatPrice(DELIVERY_FEE)}</div>
          <br>
         <hr>  <!-- Trennlinie -->
         <br>
         <div class="total-price">
         <strong>Total:</strong>
-        <strong>${formatPrice(totalPrice + 4.99)}</strong>
+        <strong>${formatPrice(totalPrice + DELIVERY_FEE)}</strong>
         </div>
+        <button onclick="order()">order</button>
         </div>`;
 }
 
@@ -133,6 +138,12 @@ function decreaseAmount(name){// verringern der Anzahl
     renderBasket();
 
     
+}
+
+function order(){
+    basketDishes = [];
+    const basketContainer = document.getElementById("basket");
+    basketContainer.innerHTML = "<div>Thanks for order</div>";
 }
 //     // Declarierung der Funktion render Basket
 //     for (const category in myDishes) {
