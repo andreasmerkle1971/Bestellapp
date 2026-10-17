@@ -38,11 +38,33 @@ function setTemplateMeals(meal, category) {
     </div>`;
 }
 
-function setTemplateBasket(){
+function setTemplateBasketMeals(dish){
+    return `
+        <div>
+        <span>${dish.name}</span>
+        <br>
+        <button onclick="decreaseAmount('${dish.name}')">-</button>
+        <span>${dish.amount} x</span>
+        <button onclick="increaseAmount('${dish.name}')">+</button>
+        <span>${formatPrice(dish.price)}</span>
+        </div>
+        `;
+}
+
+function setTemplateOrderTotal(totalPrice){
+return  `
+        <div class="basket-total">
+        <div>Subtotal: ${formatPrice(totalPrice)}</div>
+        <div>Delivery fee: ${formatPrice(DELIVERY_FEE)}</div>
+        <br>
+        <hr>  <!-- Trennlinie -->
+        <br>
+        <div class="total-price">
+        <strong>Total:</strong>
+        <strong>${formatPrice(totalPrice + DELIVERY_FEE)}</strong>
+        </div>
+        <button onclick="order()">order</button>
+        </div>`;
 
 
-
-
-
-    
 }

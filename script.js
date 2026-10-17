@@ -34,39 +34,18 @@ function addToBasket(category, name) {
 }
 
 function renderBasket() {
-    const basketContainer = document.getElementById("basket");
-    document.getElementById("basket").innerHTML = "";
+    const basketContainer = document.getElementById('basket');
+    document.getElementById("basket").innerHTML = '';
     if (basketDishes.length === 0) {
         basketContainer.innerHTML = "<div>Your basket is empty</div>";
         return;
     }
     basketContainer.innerHTML = "<h2>Your Basket</h2>"; // Überschrift der Bestellung
     for (const dish of basketDishes) {
-        basketContainer.innerHTML += `
-        <div>
-        <span>${dish.name}</span>
-        <br>
-        <button onclick="decreaseAmount('${dish.name}')">-</button>
-        <span>${dish.amount} x</span>
-        <button onclick="increaseAmount('${dish.name}')">+</button>
-        <span>${formatPrice(dish.price)}</span>
-        </div>
-        `;
+        basketContainer.innerHTML += setTemplateBasketMeals(dish);
     }
     const totalPrice = calcPrice();
-    basketContainer.innerHTML += `
-        <div class="basket-total">
-        <div>Subtotal: ${formatPrice(totalPrice)}</div>
-        <div>Delivery fee: ${formatPrice(DELIVERY_FEE)}</div>
-        <br>
-        <hr>  <!-- Trennlinie -->
-        <br>
-        <div class="total-price">
-        <strong>Total:</strong>
-        <strong>${formatPrice(totalPrice + DELIVERY_FEE)}</strong>
-        </div>
-        <button onclick="order()">order</button>
-        </div>`;
+    basketContainer.innerHTML += setTemplateOrderTotal(totalPrice);
 }
 
 function calcPrice() {
@@ -78,7 +57,6 @@ function calcPrice() {
 }
 
 function increaseAmount(name) {
-    // erhöhen der Anzahl
     const dish = basketDishes.find((dish) => dish.name === name);
     if (dish) {
         dish.amount++;
@@ -87,7 +65,6 @@ function increaseAmount(name) {
 }
 
 function decreaseAmount(name) {
-    // verringern der Anzahl
     const dish = basketDishes.find((dish) => dish.name === name);
     if (dish) {
         dish.amount--;
