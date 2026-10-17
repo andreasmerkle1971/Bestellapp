@@ -33,9 +33,10 @@ function addToBasket(category, name) {
     renderBasket();
 }
 
+//==================================  Warenkorb  ===============================================================================
+
 function renderBasket() {
-    const basketContainer = document.getElementById('basket');
-    document.getElementById("basket").innerHTML = '';
+    const basketContainer = document.getElementById("basket");
     if (basketDishes.length === 0) {
         basketContainer.innerHTML = "<div>Your basket is empty</div>";
         return;
@@ -76,7 +77,15 @@ function decreaseAmount(name) {
 }
 
 function order() {
-    basketDishes = [];
-    const basketContainer = document.getElementById("basket");
-    basketContainer.innerHTML = "<div>Thanks for order</div>";
+    basketDishes = []; // leert den Warenkorb nach dem Bestellen
+    renderBasket();
+    document.getElementById("orderConfirmed").innerHTML = setTemplateOrderConfirmed();
+
 }
+
+
+function closeDialog(){
+    document.getElementById("orderConfirmed").innerHTML = "";
+    
+}
+

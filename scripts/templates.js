@@ -20,7 +20,7 @@ function setTemplateCategory(categoryId, iconPath, category) {
 function setTemplateMeals(meal, category) {
     return /*html*/ `
     <div class="meal-section">
-        <div class="dish" id="${meal.name}-container">
+        <div class="dish">
                 <div>
                     <img src="${meal.image}" alt="${meal.name}">
                 </div>
@@ -56,15 +56,26 @@ return  `
         <div class="basket-total">
         <div>Subtotal: ${formatPrice(totalPrice)}</div>
         <div>Delivery fee: ${formatPrice(DELIVERY_FEE)}</div>
-        <br>
-        <hr>  <!-- Trennlinie -->
-        <br>
+        <hr> 
         <div class="total-price">
         <strong>Total:</strong>
         <strong>${formatPrice(totalPrice + DELIVERY_FEE)}</strong>
         </div>
-        <button onclick="order()">order</button>
+        <button onclick="order()">buy now (${formatPrice(totalPrice)})</button>
         </div>`;
 
 
+}
+
+function setTemplateOrderConfirmed(){
+    return /*HTML*/ `
+    <div class="modal-overlay" onclick="closeDialog()"> 
+    <div class="dialog" onclick="event.stopPropagation()">
+    <h2>Order Confirmed!</h2>
+    <h3>Your food is on the way!</h3>
+    <button onclick="closeDialog()">Close</button>
+    </div>    
+    </div>    
+    
+    `
 }
