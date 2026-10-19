@@ -12,6 +12,7 @@ function init() {
 //==================================  Speisekarte  ===============================================================================
 
 function renderMeals() {
+    document.getElementById("myDishes").innerHTML = ""; // geleert werden muss vor der Schleife
     for (const category in myDishes) {
         const iconPath = CATEGORY_ICONS[category];
         const categoryId = category.replace(/[^a-zA-Z0-9]/g, "-"); // damit die ID korrekt ist, werden die Sonderzeichen ersetzt
@@ -30,7 +31,7 @@ function addToBasket(category, name) {
     } else {
         basketDishes.push({ ...meal, amount: 1 }); // Meal wird neu hinzugefügt
     }
-    renderBasket();
+    updateView();
 }
 
 //==================================  Warenkorb  ===============================================================================
@@ -62,7 +63,7 @@ function increaseAmount(name) {
     if (dish) {
         dish.amount++;
     }
-    renderBasket();
+    updateView();
 }
 
 function decreaseAmount(name) {
@@ -73,19 +74,26 @@ function decreaseAmount(name) {
             basketDishes = basketDishes.filter((d) => d.name !== name);
         }
     }
-    renderBasket();
+    updateView();
 }
 
 function order() {
     basketDishes = []; // leert den Warenkorb nach dem Bestellen
-    renderBasket();
+    updateView();
     document.getElementById("orderConfirmed").innerHTML = setTemplateOrderConfirmed();
-
 }
 
 
 function closeDialog(){
     document.getElementById("orderConfirmed").innerHTML = "";
-    
-}
+    }
 
+ function getBasketAmount(name){
+    const dish = basketDishes.find((item) => item.name === name);
+    return dish ? dish.amount : 0;
+ }
+
+ function updateView(){
+    renderMeals();
+    renderBasket();
+ }

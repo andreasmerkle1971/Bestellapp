@@ -18,6 +18,8 @@ function setTemplateCategory(categoryId, iconPath, category) {
 }
 
 function setTemplateMeals(meal, category) {
+    const amount = getBasketAmount(meal.name);
+    const label = amount > 0 ? `added ${amount}` : "Add to basket";
     return /*html*/ `
     <div class="meal-section">
         <div class="dish">
@@ -31,7 +33,7 @@ function setTemplateMeals(meal, category) {
                 </div>
                     <div class="order">
                         <p class="price">${formatPrice(meal.price)}</p>
-                        <button onclick="addToBasket('${category}', '${meal.name}')">Add to basket</button>
+                        <button onclick="addToBasket('${category}', '${meal.name}')">${label}</button>
                     </div>
                 </div>
         </div>
