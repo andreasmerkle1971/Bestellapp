@@ -23,9 +23,9 @@ function renderMeals() {
     }
 }
 
-function addToBasket(category, name) {
-    const meal = myDishes[category].find((dish) => dish.name === name); // sucht aus dem Json
-    const existingMeal = basketDishes.find((dish) => dish.name === name); //prüft, ob schon vorhanden
+function addToBasket(category, id) {
+    const meal = myDishes[category].find((dish) => dish.id === id); // sucht aus dem Json
+    const existingMeal = basketDishes.find((dish) => dish.id === id); //prüft, ob schon vorhanden
     if (existingMeal) {
         existingMeal.amount++; // Anzahl im Warenkorb wird erhöht
     } else {
@@ -58,42 +58,43 @@ function calcPrice() {
     return total;
 }
 
-function increaseAmount(name) {
-    const dish = basketDishes.find((dish) => dish.name === name);
+function increaseAmount(id) {
+    const dish = basketDishes.find((dish) => dish.id === id);
     if (dish) {
         dish.amount++;
     }
     updateView();
 }
 
-function decreaseAmount(name) {
-    const dish = basketDishes.find((dish) => dish.name === name);
+function decreaseAmount(id) {
+    const dish = basketDishes.find((dish) => dish.id === id);
     if (dish) {
         dish.amount--;
         if (dish.amount === 0) {
-            basketDishes = basketDishes.filter((d) => d.name !== name);
+            basketDishes = basketDishes.filter((d) => d.id !== id);
         }
     }
     updateView();
 }
 
+function getBasketAmount(id){
+    const dish = basketDishes.find((item) => item.id === id);
+    return dish ? dish.amount : 0;
+}
+function removeFromBasket(id){
+    basketDishes = basketDishes.filter((dish) => dish.id !==id);
+    updateView();
+    }
+
+function updateView(){
+    renderMeals();
+    renderBasket();
+}
 function order() {
     basketDishes = []; // leert den Warenkorb nach dem Bestellen
     updateView();
     document.getElementById("orderConfirmed").innerHTML = setTemplateOrderConfirmed();
 }
-
-
 function closeDialog(){
     document.getElementById("orderConfirmed").innerHTML = "";
-    }
-
- function getBasketAmount(name){
-    const dish = basketDishes.find((item) => item.name === name);
-    return dish ? dish.amount : 0;
- }
-
- function updateView(){
-    renderMeals();
-    renderBasket();
- }
+}

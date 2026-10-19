@@ -8,18 +8,19 @@ function formatPrice(price) {
 }
 
 function setTemplateCategory(categoryId, iconPath, category) {
+    const title = category.replace(/\(.*\)/, '<span class="category-size">$&</span>');  // kann jetzt separat zuweisen
     return /*HTML*/ `
             <div  id="${categoryId}-container"> 
             <div class="meal-category">
             <img src="${iconPath}" alt="foto ${category}">
-            <h2 >${category}</h2>
+            <h2 >${title}</h2>
             </div>
         </div>`;
 }
 
 function setTemplateMeals(meal, category) {
-    const amount = getBasketAmount(meal.name);
-    const label = amount > 0 ? `added ${amount}` : "Add to basket";
+    const amount = getBasketAmount(meal.id);
+    const label = amount > 0 ? `Added ${amount}` : "Add to basket";
     return /*html*/ `
     <div class="meal-section">
         <div class="dish">
@@ -33,7 +34,7 @@ function setTemplateMeals(meal, category) {
                 </div>
                     <div class="order">
                         <p class="price">${formatPrice(meal.price)}</p>
-                        <button onclick="addToBasket('${category}', '${meal.name}')">${label}</button>
+                        <button onclick="addToBasket('${category}', ${meal.id})">${label}</button>
                     </div>
                 </div>
         </div>
@@ -45,10 +46,11 @@ function setTemplateBasketMeals(dish){
         <div>
         <span>${dish.name}</span>
         <br>
-        <button onclick="decreaseAmount('${dish.name}')">-</button>
+        <button onclick="decreaseAmount(${dish.id})">-</button>
         <span>${dish.amount} x</span>
-        <button onclick="increaseAmount('${dish.name}')">+</button>
+        <button onclick="increaseAmount(${dish.id})">+</button>
         <span>${formatPrice(dish.price)}</span>
+        <button onclick="removeFromBasket(${dish.id})">del</button>
         </div>
         `;
 }
@@ -63,7 +65,7 @@ return  `
         <strong>Total:</strong>
         <strong>${formatPrice(totalPrice + DELIVERY_FEE)}</strong>
         </div>
-        <button onclick="order()">buy now (${formatPrice(totalPrice)})</button>
+        <button onclick="order()">buy now (${formatPrice(totalPrice + DELIVERY_FEE)})</button>
         </div>`;
 
 
