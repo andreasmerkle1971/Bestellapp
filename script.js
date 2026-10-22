@@ -7,6 +7,7 @@ const CATEGORY_ICONS = {
 };
 function init() {
     renderMeals();
+    renderBasket();
 }
 
 //==================================  Speisekarte  ===============================================================================
@@ -39,7 +40,7 @@ function addToBasket(category, id) {
 function renderBasket() {
     const basketContainer = document.getElementById("basket");
     if (basketDishes.length === 0) {
-        basketContainer.innerHTML = "<div>Your basket is empty</div>";
+        basketContainer.innerHTML = setTemplateEmptyBasket();
         return;
     }
     basketContainer.innerHTML = "<h2>Your Basket</h2>"; // Überschrift der Bestellung
@@ -85,6 +86,7 @@ function removeFromBasket(id){
     basketDishes = basketDishes.filter((dish) => dish.id !==id);
     updateView();
     }
+
 
 function updateView(){
     renderMeals();
