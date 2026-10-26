@@ -53,18 +53,17 @@ function setTemplateBasketMeals(dish) {
         : `<button class="icon-btn" onclick="decreaseAmount(${dish.id})"><img src="./assets/icons/-.svg" alt="Weniger"></button>`;
         return `
     <div class="basket-meal-card">
-    <div class="basket-meal-top">
-    <div>
-        <span>${dish.amount}x </span>
-        <span>${dish.name}</span>
+        <div class="basket-meal-top">
+            <span>${dish.amount}x ${dish.name}</span>
+            ${trashTop}
         </div>
-              ${trashTop}
+        <div class="basket-meal-controls">
+            <div class="basket-amount"> ${leftButton}
+                <span>${dish.amount}</span>
+                <button class="icon-btn" onclick="increaseAmount(${dish.id})"><img src="./assets/icons/+.svg" alt="Mehr"></button>
+                </div>
+                <span>${formatPrice(dish.price*dish.amount)}</span>
         </div>
-        <div class="basket-meal-controls">${leftButton}
-            <span>${dish.amount}</span>
-            <button class="icon-btn" onclick="increaseAmount(${dish.id})"><img src="./assets/icons/+.svg" alt="Mehr"></button>
-            <span>${formatPrice(dish.price*dish.amount)}</span>
-            </div>
         </div>
         `;
 }
@@ -87,9 +86,11 @@ function setTemplateOrderConfirmed() {
     return /*HTML*/ `
     <div class="modal-overlay" onclick="closeDialog()"> 
     <div class="dialog" onclick="event.stopPropagation()">
+        <button class="dialog-close" onclick="closeDialog()" aria-label="Schließen"><img src="./assets/icons/close.svg" alt=""></button>
+    
+    <img src="./assets/icons/ordered.svg" alt="bestellt">
     <h2>Order Confirmed!</h2>
     <h3>Your food is on the way!</h3>
-    <button onclick="closeDialog()">Close</button>
     </div>    
     </div>    
     
@@ -98,8 +99,10 @@ function setTemplateOrderConfirmed() {
 
 function setTemplateEmptyBasket(){ //so sieht der leere Warenkorb aus
     return `
+    <div class="basket-empty"> 
         <h2>Your Basket</h2>
         <p>Nothing here yet. Go ahead and choose something delicious!</p>
-        <img src="./assets/icons/shopping_cart.svg" alt="Leerer Warenkorb">`;
-
+        <img src="./assets/icons/shopping_cart.svg" alt="Leerer Warenkorb">
+        </div>
+        `;
 }
