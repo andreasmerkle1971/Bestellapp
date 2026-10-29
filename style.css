@@ -235,7 +235,7 @@ main {
     margin-left: auto;
 }
 .basket-total {
-margin: auto 0;
+margin: 0;
 
 }
 .basket .order-button > p {
@@ -247,7 +247,6 @@ margin: auto 0;
     /* padding: 13px 0; */
 }
 .basket {
-    /* position: absolute; */
     position: sticky;
     height: 800px;
     width: 430px;
@@ -262,7 +261,6 @@ margin: auto 0;
     border-bottom-left-radius: 30px;
     padding-top: 20px;
     color: #fdeadc;
-    /* overflow: auto; */
     scrollbar-width: auto;
     gap: 0px;
     overflow: hidden;
@@ -391,9 +389,24 @@ margin: auto 0;
     font-size: 1em;
 }
 
-.total-order-section{
-display: flex;
-align-self: flex-end;
+.total-order-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: palanquin;
+    font-weight: 600;
+    font-size: 1.25em;
+    margin-bottom: 8px;
+
+}
+.total-price{
+    font-family: palanquin;
+    font-weight: 700;
+    font-size: 1.375em;
+    margin-top: 8px;
+
+
+
 
 }
 

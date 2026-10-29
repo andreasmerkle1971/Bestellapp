@@ -75,10 +75,16 @@ function setTemplateOrderTotal(totalPrice) {
     return `
     <div class="basket-footer">
         <div class="basket-total">
-            <div>Subtotal: ${formatPrice(totalPrice)}</div>
-                <div>Delivery fee: ${formatPrice(DELIVERY_FEE)}</div>
+            <div class="total-order-section">
+            <span>Subtotal:</span>
+            <span>${formatPrice(totalPrice)}</span>
+            </div>
+            <div class="total-order-section">
+            <span>Delivery fee:</span>
+            <span>${formatPrice(DELIVERY_FEE)}</span>
+            </div>
                     <hr> 
-                        <div class="total-price">
+                        <div class="total-order-section total-price">
                             <strong>Total:</strong>
                             <strong>${formatPrice(totalPrice + DELIVERY_FEE)}</strong>
                         </div>
