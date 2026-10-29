@@ -43,13 +43,27 @@ function renderBasket() {
         basketContainer.innerHTML = setTemplateEmptyBasket();
         return;
     }
-    basketContainer.innerHTML = "<h2>Your Basket</h2>"; // Überschrift der Bestellung
-    for (const dish of basketDishes) {
-        basketContainer.innerHTML += setTemplateBasketMeals(dish);
+    let mealsHtml = "";
+    for (const dish of basketDishes){
+        mealsHtml += setTemplateBasketMeals(dish);
     }
-    const totalPrice = calcPrice();
-    basketContainer.innerHTML += setTemplateOrderTotal(totalPrice);
-}
+
+basketContainer.innerHTML = `
+<h2>Your Basket</h2>
+<div class="basket-items">${mealsHtml}</div>
+${setTemplateOrderTotal(calcPrice())}
+
+
+
+
+`
+
+
+
+ 
+    }
+
+
 
 function calcPrice() {
     let total = 0;

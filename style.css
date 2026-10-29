@@ -52,20 +52,21 @@ header {
     gap: 26px;
     padding: 20px;
     align-items: baseline;
-    h1 {
-        padding-top: 10px;
-        color: #e76c1f;
-        font-family: Palanquin Dark;
-        font-weight: 700;
-        font-size: 3rem;
-        text-align: center;
-        align-items: center;
-    }
-    img {
-        width: 110px;
-        height: 32px;
-    }
 }
+.logo-evaluation > h1 {
+    padding-top: 10px;
+    color: #e76c1f;
+    font-family: Palanquin Dark;
+    font-weight: 700;
+    font-size: 3rem;
+    text-align: center;
+    align-items: center;
+}
+.logo-evaluation > img {
+    width: 110px;
+    height: 32px;
+}
+
 .dark {
     color: #363534;
     font-family: Palanquin Dark;
@@ -208,6 +209,23 @@ main {
     font-size: 1.5em;
 }
 
+.order-button {
+    display: flex;
+    width: 320px;
+    height: 64px;
+    justify-content: center;
+    background-color: #e76c1f;
+    border-radius: 60px;
+    border: none;
+    align-self: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 16px;
+    cursor: pointer;
+    /* flex-shrink: 0; */
+}
+
 .content-basket {
     /* display: flex;
     align-items: center; */
@@ -215,7 +233,18 @@ main {
     align-self: flex-start;
     height: 100%;
     margin-left: auto;
-      
+}
+.basket-total {
+margin: auto 0;
+
+}
+.basket .order-button > p {
+    width: 100%;
+    color: #fbfbfb;
+    font-family: palanquin;
+    font-weight: 700;
+    font-size: 2em;
+    /* padding: 13px 0; */
 }
 .basket {
     /* position: absolute; */
@@ -233,15 +262,27 @@ main {
     border-bottom-left-radius: 30px;
     padding-top: 20px;
     color: #fdeadc;
-    overflow: auto;
-    scrollbar-width:auto ;
+    /* overflow: auto; */
+    scrollbar-width: auto;
     gap: 0px;
+    overflow: hidden;
 }
 .basket-empty {
     display: flex;
     flex-direction: column;
-    gap: 90px;
+    gap: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fdeadc;
+    width: 100%;
+    font-family: palanquin;
+    font-weight: 700;
+    font-size: 2em;
+}
 
+.basket-empty > p {
+    font-size: 1.5em;
 }
 .basket > h2 {
     display: flex;
@@ -261,7 +302,7 @@ main {
     width: 100%;
     font-family: palanquin;
     font-weight: 500;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     text-align: center;
 }
 .basket img {
@@ -296,42 +337,63 @@ main {
         width: 16px;
         height: 18px;
     }
-    
 }
 
-.icon-btn{
-padding: 0;
-border: none;
-background-color: #fdeadc;
-justify-content: center;
-align-items: center;
 
+.basket-items {
+    flex: 1;               /* nimmt den ganzen freien Platz */
+    min-height: 0;         /* wichtig, sonst scrollt ein Flex-Kind nicht */
+    overflow-y: auto;
+    padding-right: 8px;    /* Platz für die Scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #e76c1f transparent;
 
 }
-.basket-meal-controls{
+.basket-footer {
+    margin-top: auto;      /* statt margin-top: auto, das übernimmt flex: 1 oben */
+    position: static;      /* sticky nicht mehr nötig */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.icon-btn {
+    padding: 0;
+    border: none;
+    background-color: #fdeadc;
+    justify-content: center;
+    align-items: center;
+}
+.basket-meal-controls {
     display: flex;
     align-items: center;
     gap: 8px;
-        justify-content: space-between;
+    justify-content: space-between;
 }
 
-.basket-amount{
+.basket-amount {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-   
 }
 
-.basket-meal-top{
+.basket-meal-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
 }
-.trash-top{
+.trash-top {
     border: none;
     background: none;
     font-size: 1em;
+}
+
+.total-order-section{
+display: flex;
+align-self: flex-end;
 
 }
 
@@ -357,25 +419,25 @@ button {
     border-radius: 30px;
     text-align: center;
     color: #fdeadc;
-        position: relative;
+    position: relative;
     padding: 48px 40px 32px;
-    img{
+    img {
         width: 80px;
         height: auto;
-
     }
 }
 .dialog-close {
     position: absolute;
-    top: 12px;
-    right: 1px;
+    top: 16px;
+    right: 16px;
     border: none;
     background: none;
     color: #fdeadc;
     /* font-size: 2rem; */
     line-height: 1;
-    img{
-        height: 10px;
+    img {
+        height: 16px;
+        width: 16px;
     }
 }
 
@@ -437,7 +499,7 @@ button {
 
     .basket {
         position: static;
-        height: auto;
+        /* height: auto; */
         border-radius: 0px;
     }
 

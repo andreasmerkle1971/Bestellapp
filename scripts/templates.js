@@ -45,41 +45,49 @@ function setTemplateMeals(meal, category) {
 function setTemplateBasketMeals(dish) {
     const isOnlyOne = dish.amount === 1; // summe im warenkorb
     const trashTop = isOnlyOne
-     ? ""
-     : `<button class="trash-top" onclick="removeFromBasket(${dish.id})"><img src="./assets/icons/delete.svg" alt="Löschen"></button>`;
-     //linker button unten links bei der Anzahl, sonst Minuszeichen
-    const leftButton =isOnlyOne
-        ?`<button class="icon-btn" onclick="removeFromBasket(${dish.id})"><img src="./assets/icons/delete.svg" alt="Löschen"></button>`
+        ? ""
+        : `<button class="trash-top" onclick="removeFromBasket(${dish.id})"><img src="./assets/icons/delete.svg" alt="Löschen"></button>`;
+    //linker button unten links bei der Anzahl, sonst Minuszeichen
+    const leftButton = isOnlyOne
+        ? `<button class="icon-btn" onclick="removeFromBasket(${dish.id})"><img src="./assets/icons/delete.svg" alt="Löschen"></button>`
         : `<button class="icon-btn" onclick="decreaseAmount(${dish.id})"><img src="./assets/icons/-.svg" alt="Weniger"></button>`;
-        return `
-    <div class="basket-meal-card">
-        <div class="basket-meal-top">
+    return `
+   
+        <div class="basket-meal-card">
+            <div class="basket-meal-top">
             <span>${dish.amount}x ${dish.name}</span>
             ${trashTop}
-        </div>
+            </div>
         <div class="basket-meal-controls">
             <div class="basket-amount"> ${leftButton}
                 <span>${dish.amount}</span>
                 <button class="icon-btn" onclick="increaseAmount(${dish.id})"><img src="./assets/icons/+.svg" alt="Mehr"></button>
                 </div>
-                <span>${formatPrice(dish.price*dish.amount)}</span>
+                <span>${formatPrice(dish.price * dish.amount)}</span>
         </div>
         </div>
+    
+
         `;
 }
 
 function setTemplateOrderTotal(totalPrice) {
     return `
+    <div class="basket-footer">
         <div class="basket-total">
-        <div>Subtotal: ${formatPrice(totalPrice)}</div>
-        <div>Delivery fee: ${formatPrice(DELIVERY_FEE)}</div>
-        <hr> 
-        <div class="total-price">
-        <strong>Total:</strong>
-        <strong>${formatPrice(totalPrice + DELIVERY_FEE)}</strong>
+            <div>Subtotal: ${formatPrice(totalPrice)}</div>
+                <div>Delivery fee: ${formatPrice(DELIVERY_FEE)}</div>
+                    <hr> 
+                        <div class="total-price">
+                            <strong>Total:</strong>
+                            <strong>${formatPrice(totalPrice + DELIVERY_FEE)}</strong>
+                        </div>
+            </div>
+            <div onclick="order()" class="order-button">
+                <p>Buy now (${formatPrice(totalPrice + DELIVERY_FEE)})</p>
         </div>
-        <button onclick="order()">buy now (${formatPrice(totalPrice + DELIVERY_FEE)})</button>
-        </div>`;
+    </div>
+        `;
 }
 
 function setTemplateOrderConfirmed() {
@@ -97,7 +105,8 @@ function setTemplateOrderConfirmed() {
     `;
 }
 
-function setTemplateEmptyBasket(){ //so sieht der leere Warenkorb aus
+function setTemplateEmptyBasket() {
+    //so sieht der leere Warenkorb aus
     return `
     <div class="basket-empty"> 
         <h2>Your Basket</h2>
