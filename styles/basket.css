@@ -2,9 +2,8 @@
 
 .content-basket {
     flex-shrink: 0;
-    align-self: flex-start;
-    height: 100%;
-    margin-left: auto;
+    align-self: stretch;
+        margin-left: auto;
 }
 
 .basket-total {
