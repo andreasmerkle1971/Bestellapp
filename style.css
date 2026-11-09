@@ -513,29 +513,25 @@ button {
     display: none;
 }
 
-.footer-icons{
-            width: 25px;
-        height: 25px;
-
-
+.footer-icons {
+    width: 25px;
+    height: 25px;
 }
-.mobile-bar-badge{
-        position: absolute;
-        top: 8px;
-        left: calc(50% + 6px);
-        min-width: 15px;
-        height: 15px;
-        padding: 0 5px;
-        border-radius: 9px;
-        background-color: #FDEADC;
-        color: #E76C1F;
-        font-family: palanquin;
-        font-weight: 700;
-        font-size: 0.7rem;
-        line-height: 15px;
-        text-align: center;
-
-
+.mobile-bar-badge {
+    position: absolute;
+    top: 8px;
+    left: calc(50% + 6px);
+    min-width: 15px;
+    height: 15px;
+    padding: 0 5px;
+    border-radius: 9px;
+    background-color: #fdeadc;
+    color: #e76c1f;
+    font-family: palanquin;
+    font-weight: 700;
+    font-size: 0.7rem;
+    line-height: 15px;
+    text-align: center;
 }
 
 /* ================ hier beginnen die media quiries ==================================== */
@@ -571,7 +567,7 @@ button {
     .basket {
         width: 200px;
     }
-    
+
     .meal-category h2 {
         font-size: 2em;
     }
@@ -590,12 +586,10 @@ button {
         margin-bottom: 16px;
         cursor: pointer;
         /* flex-shrink: 0; */
-        
     }
-  .basket .order-button > p {
-
-    font-size: 1.5rem;   
-    line-height: 1.2; 
+    .basket .order-button > p {
+        font-size: 1.5rem;
+        line-height: 1.2;
     }
 }
 
@@ -603,7 +597,7 @@ button {
     body {
         padding-bottom: calc(64px + env(safe-area-inset-bottom));
     }
-    
+
     .mobile-bar {
         display: flex;
         position: fixed;
@@ -617,14 +611,14 @@ button {
         z-index: 1000;
     }
     .basket .order-button > p {
-    width: 100%;
-    color: #fbfbfb;
-    font-family: palanquin;
-    font-weight: 700;
-    font-size: 1.5em;
-    padding: 13px 18px;
-}
-    
+        width: 100%;
+        color: #fbfbfb;
+        font-family: palanquin;
+        font-weight: 700;
+        font-size: 1.5em;
+        padding: 13px 18px;
+    }
+
     .mobile-bar-item {
         flex: 1;
         display: flex;
@@ -632,7 +626,7 @@ button {
         justify-content: center;
         color: #fdeadc;
     }
-    
+
     .mobile-bar-item svg {
         width: 26px;
         height: 26px;
@@ -642,8 +636,16 @@ button {
         stroke-linecap: round;
         stroke-linejoin: round;
     }
+    .burger-logo img {
+        display: flex;
+        justify-content: center;
+        /* margin-top: -130px; */
+        height: 160px;
+        width: 160px;
+        margin-top: 60px;
+    }
 
-    .content-basket{
+    .content-basket {
         display: none;
         position: fixed;
         left: 0;
@@ -653,14 +655,13 @@ button {
         height: auto;
         margin: 0;
         z-index: 999;
-
     }
 
-        .content-basket. {
+    .content-basket {
         display: none;
     }
-     /* gilt nur noch, wenn js open gesetzt ist */
-        .content-basket.open {
+    /* gilt nur noch, wenn js open gesetzt ist */
+    .content-basket.open {
         display: block;
     }
 
@@ -669,9 +670,31 @@ button {
         width: 100%;
         height: auto;
         max-height: 60vh;
-        border-radius: 30px 30px 0 0;;
+        border-radius: 30px 30px 0 0;
     }
+        .footer-tags {
+        flex-direction: column;
+        height: auto;
+        gap: 8px;
+        translate: none;
+        padding: 0;
+        font-size: 1.125px;
+    }
+
+    .footer-tags > p:nth-of-type(1) {
+        order: 1;
+    }
+
+    .footer-tags > p:nth-of-type(2) {
+        order: 2;
+    }
+
+    .copyright {
+        order: 3;
+    }
+
 }
+
 
 @media (max-width: 480px) {
     .dish {
@@ -691,7 +714,7 @@ button {
         flex-direction: column;
         padding: 0 16px 16px;
     }
-    .meal-category{
+    .meal-category {
         /* height: auto; */
         display: flex;
         flex-direction: column;
@@ -699,10 +722,9 @@ button {
         gap: 4px;
         margin: 16px 0;
 
-                
         justify-content: flex-end;
         padding: 0 0 8px;
-        img{
+        img {
             width: 60px;
             height: 60px;
             transform: none;
@@ -714,14 +736,12 @@ button {
         line-height: 1;
         padding: 0;
         white-space: nowrap;
-    
     }
-        .meal-category::before {
+    .meal-category::before {
         inset: 0 -20px;
         box-shadow: none;
         clip-path: none;
     }
-    
 
     .order {
         flex-direction: row;
@@ -738,23 +758,22 @@ button {
         width: auto;
         padding: 8px 16px;
     }
-.basket .order-button > p {
-    width: 100%;
-    color: #fbfbfb;
-    font-family: palanquin;
-    font-weight: 700;
-    font-size: 1.5em;
-    padding: 13px 18px;
-}
+    .basket .order-button > p {
+        width: 100%;
+        color: #fbfbfb;
+        font-family: palanquin;
+        font-weight: 700;
+        font-size: 1.5em;
+        padding: 13px 18px;
+    }
 
-.logo-evaluation{
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0 0 0;
-    gap: 0;
-   
-}
+    .logo-evaluation {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0 0 0;
+        gap: 0;
+    }
     .footer-tags {
         height: auto;
         flex-wrap: wrap;
@@ -770,28 +789,28 @@ button {
     .dark {
         font-size: 2.5rem;
     }
-.description-shop{
-
-    font-size: 1.375em;
-    padding: 0 8px 32px 8px;
-}
- .header-picture > img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    object-position: center;
-display: block;
-padding: 8px;
-border-radius: 16px;
-}
-.burger-logo img {
-    display: flex;
-    justify-content: center;
-    /* margin-top: -130px; */
-    height: 120px;
-    width: 120px;
-    margin-top: 60px;
-}
-    .meal-section {
-    align-items: center;
+    .description-shop {
+        font-size: 1.375em;
+        padding: 0 8px 32px 8px;
     }
+    .header-picture > img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        padding: 8px;
+        border-radius: 16px;
+    }
+    .burger-logo img {
+        display: flex;
+        justify-content: center;
+        /* margin-top: -130px; */
+        height: 120px;
+        width: 120px;
+        margin-top: 60px;
+    }
+    .meal-section {
+        align-items: center;
+    }
+}
