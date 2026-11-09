@@ -2,7 +2,11 @@
 <html lang="de">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--für mediaqueries für Handy-->
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
+        <!--für mediaqueries für Handy-->
         <title>Document</title>
         <script src="./scripts/db.js"></script>
         <script src="./scripts/templates.js"></script>
@@ -67,5 +71,40 @@
                 </div>
             </div>
         </footer>
+        <nav class="mobile-bar" aria-label="Hauptnavigation">
+            <a class="mobile-bar-item" aria-label="Startseite">
+                <img
+                    class="footer-icons"
+                    src="./assets/icons/home.svg"
+                    alt="Foto home"
+                />
+            </a>
+            <a class="mobile-bar-item" aria-label="Kundenkonto">
+                <img
+                    class="footer-icons"
+                    src="./assets/icons/person.svg"
+                    alt="Foto person"
+                />
+            </a>
+            <a class="mobile-bar-item" aria-label="Favoriten">
+                <img
+                    class="footer-icons"
+                    src="./assets/icons/takeout_dining.svg"
+                    alt="Foto chart"
+                />
+            </a>
+            <a
+                class="mobile-bar-item"
+                aria-label="Warenkorb"
+                onclick="toggleBasket(event)"
+            >
+                <img
+                    class="footer-icons"
+                    src="./assets/icons/basket_small.svg"
+                    alt="Foto take out dining"
+                />
+                <span class="mobile-bar-badge" id="count-basket-footer"></span>
+            </a>
+        </nav>
     </body>
 </html>

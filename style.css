@@ -7,11 +7,6 @@
     position: relative;
 }
 
-html,
-body {
-    /* height: 100%; */
-    
-}
 body {
     min-height: 100%;
     display: flex;
@@ -135,7 +130,8 @@ main {
         font-weight: 700;
         font-size: 3em;
         padding-bottom: 15px;
-white-space: nowrap;    }
+        white-space: nowrap;
+    }
 }
 .meal-category::before {
     content: ""; /* Pseudoelement wird aktiviert */
@@ -173,6 +169,10 @@ white-space: nowrap;    }
         font-family: palanquin;
         font-weight: 600;
         font-size: 1.5em;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         line-height: 1.2;
         /* margin: 0; */
     }
@@ -180,17 +180,14 @@ white-space: nowrap;    }
         color: #363534;
         width: 100%;
         /* margin: 0; */
-        font-family: 'Palanquin';
+        font-family: "Palanquin";
         font-weight: 500;
         font-size: 1em;
-
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         line-height: 1.5;
-
-       
     }
 }
 
@@ -199,8 +196,6 @@ white-space: nowrap;    }
     flex: 1;
     padding-right: 25px;
     gap: 16px;
-    
-    
 }
 
 .order {
@@ -260,8 +255,7 @@ white-space: nowrap;    }
     margin-left: auto;
 }
 .basket-total {
-margin: 0;
-
+    margin: 0;
 }
 .basket .order-button > p {
     width: 100%;
@@ -362,19 +356,17 @@ margin: 0;
     }
 }
 
-
 .basket-items {
-    flex: 1;               /* nimmt den ganzen freien Platz */
-    min-height: 0;         /* wichtig, sonst scrollt ein Flex-Kind nicht */
+    flex: 1; /* nimmt den ganzen freien Platz */
+    min-height: 0; /* wichtig, sonst scrollt ein Flex-Kind nicht */
     overflow-y: auto;
-    padding-right: 8px;    /* Platz für die Scrollbar */
+    padding-right: 8px; /* Platz für die Scrollbar */
     scrollbar-width: thin;
     scrollbar-color: #e76c1f transparent;
-
 }
 .basket-footer {
-    margin-top: auto;      /* statt margin-top: auto, das übernimmt flex: 1 oben */
-    position: static;      /* sticky nicht mehr nötig */
+    margin-top: auto; /* statt margin-top: auto, das übernimmt flex: 1 oben */
+    position: static; /* sticky nicht mehr nötig */
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -422,17 +414,12 @@ margin: 0;
     font-weight: 600;
     font-size: 1.25em;
     margin-bottom: 8px;
-
 }
-.total-price{
+.total-price {
     font-family: palanquin;
     font-weight: 700;
     font-size: 1.375em;
     margin-top: 8px;
-
-
-
-
 }
 
 button {
@@ -521,7 +508,36 @@ button {
     align-items: center;
 }
 
+.mobile-bar {
+    display: none;
+}
 
+.footer-icons{
+            width: 25px;
+        height: 25px;
+
+
+}
+.mobile-bar-badge{
+        position: absolute;
+        top: 8px;
+        left: calc(50% + 6px);
+        min-width: 15px;
+        height: 15px;
+        padding: 0 5px;
+        border-radius: 9px;
+        background-color: #FDEADC;
+        color: #E76C1F;
+        font-family: palanquin;
+        font-weight: 700;
+        font-size: 0.7rem;
+        line-height: 15px;
+        text-align: center;
+
+
+}
+
+/* ================ hier beginnen die media quiries ==================================== */
 
 @media (max-width: 1300px) {
     main {
@@ -543,84 +559,84 @@ button {
 }
 
 @media (max-width: 1150px) {
-    main {
-        min-width: 0;
+    .meal-section {
+        margin-left: 0;
     }
-    .basket {
-        width: 300px;
-    }
-    .meal-category {
-        h2 {
-            color: #ffffff;
-            font-family: palanquin;
-            font-weight: 700;
-            font-size: 2em;
-            padding-bottom: 15px;
-            white-space: nowrap;
-        }
-    }
-}
-.content_wrapper {
-    
-    gap: 0px;
 
+    .content_wrapper {
+        gap: 0;
+    }
+
+    .basket {
+        width: 200px;
+    }
+    
+    .meal-category h2 {
+        font-size: 2em;
+    }
+    .order-button {
+        display: flex;
+        width: auto;
+        height: 64px;
+        justify-content: center;
+        background-color: #e76c1f;
+        border-radius: 60px;
+        border: none;
+        align-self: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 16px;
+        cursor: pointer;
+        /* flex-shrink: 0; */
+        
+    }
+  .basket .order-button > p {
+
+    font-size: 1.5rem;   
+    line-height: 1.2; 
+    }
 }
 
 @media (max-width: 768px) {
-        .content_wrapper {
-        flex-direction: column;
-        align-items: center;
     body {
-            padding-bottom: 50vh; 
-        }
+        padding-bottom: calc(64px + env(safe-area-inset-bottom));
     }
-    main {
-        min-width: 0;
-    }
-    .basket {
-        width: 300px;
-    }
-    .meal-category {
-        h2 {
-            color: #ffffff;
-            font-family: palanquin;
-            font-weight: 700;
-            font-size: 2em;
-            padding-bottom: 15px;
-            white-space: nowrap;
-        }
-    }
-    .content_wrapper {
-        
-        gap: 0px;
     
-    }
-    .content-basket {
-        width: 100%;
-        height: auto;
+    .mobile-bar {
+        display: flex;
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
-        width: 100%;
-        height: auto;
-        margin: 0;
-        z-index: 20;
-        bottom: 0;
+        height: calc(64px + env(safe-area-inset-bottom));
+        padding-bottom: env(safe-area-inset-bottom);
+        background-color: #363534;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
     }
     
-        .basket {
-            position: static;
-            width: 100%;
-            height: auto;
-            max-height: 50vh;
-            border-radius: 0;
-        }
+    .mobile-bar-item {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fdeadc;
+    }
+    
+    .mobile-bar-item svg {
+        width: 26px;
+        height: 26px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    .basket {
+        display: none;
+    }
 }
-
-
-
-
 
 /* 
 @media (max-width: 480px) {

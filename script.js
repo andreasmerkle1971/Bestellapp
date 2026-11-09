@@ -38,6 +38,7 @@ function addToBasket(category, id) {
 //==================================  Warenkorb  ===============================================================================
 
 function renderBasket() {
+    updateCounterBasketFooter();
     const basketContainer = document.getElementById("basket");
     if (basketDishes.length === 0) {
         basketContainer.innerHTML = setTemplateEmptyBasket();
@@ -105,6 +106,7 @@ function removeFromBasket(id){
 function updateView(){
     renderMeals();
     renderBasket();
+    
 }
 function order() {
     basketDishes = []; // leert den Warenkorb nach dem Bestellen

@@ -71,6 +71,17 @@ function setTemplateBasketMeals(dish) {
         `;
 }
 
+function updateCounterBasketFooter(){
+
+    let count = 0;
+    for (const dish of basketDishes){
+        count += dish.amount;
+
+    }
+    const countBasketFooter = document.getElementById("count-basket-footer");
+    countBasketFooter.textContent = count > 0 ? count :  "";
+}
+
 function setTemplateOrderTotal(totalPrice) {
     return `
     <div class="basket-footer">
