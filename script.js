@@ -121,6 +121,7 @@ function updateView(){
 function order() {
     basketDishes = []; // leert den Warenkorb nach dem Bestellen
     updateView();
+    document.querySelector(".content-basket").classList.remove("open"); // läßt Warenkorb verschwinden
     document.getElementById("orderConfirmed").innerHTML = setTemplateOrderConfirmed();
 }
 
