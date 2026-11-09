@@ -52,16 +52,7 @@ function renderBasket() {
 basketContainer.innerHTML = `
 <h2>Your Basket</h2>
 <div class="basket-items">${mealsHtml}</div>
-${setTemplateOrderTotal(calcPrice())}
-
-
-
-
-`
-
-
-
- 
+${setTemplateOrderTotal(calcPrice())}`
     }
 
 
@@ -101,6 +92,14 @@ function removeFromBasket(id){
     basketDishes = basketDishes.filter((dish) => dish.id !==id);
     updateView();
     }
+
+
+
+function toggleBasket(event){
+    event.preventDefault();
+    document.querySelector(".content-basket").classList.toggle("open");
+}
+
 
 
 function updateView(){
