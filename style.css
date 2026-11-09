@@ -1,48 +1,27 @@
 /* für den globalen style und Struktur */
 
-* {
-    margin: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    position: relative;
-}
-
-body {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    /* overflow-x: clip; */
-}
-
-header {
-    display: flex;
-    height: 128px;
-    justify-content: space-between;
-    background-color: #e76c1f;
-    color: white;
-    align-items: center;
-    padding-left: 60px;
-    padding-right: 60px;
-}
 .bestell-app-logo {
     height: 38px;
     width: 92px;
 }
+
 .menu-bar {
     height: 60px;
     width: 60px;
 }
+
 .header-picture > img {
     width: 100%;
     height: auto;
 }
+
 .burger-logo {
     display: flex;
     justify-content: center;
     margin-top: -130px;
     height: 200px;
 }
+
 .logo-evaluation {
     display: flex;
     flex-direction: row;
@@ -51,6 +30,7 @@ header {
     padding: 20px;
     align-items: baseline;
 }
+
 .logo-evaluation > h1 {
     padding-top: 10px;
     color: #e76c1f;
@@ -60,6 +40,7 @@ header {
     text-align: center;
     align-items: center;
 }
+
 .logo-evaluation > img {
     width: 110px;
     height: 32px;
@@ -82,6 +63,7 @@ header {
     font-size: 1.5rem;
     text-align: center;
 }
+
 .content_wrapper {
     max-width: 1440px;
     display: flex;
@@ -94,26 +76,12 @@ header {
     justify-content: space-between;
     align-items: flex-start;
 }
-main {
-    display: flex;
-    flex-direction: column;
-    max-width: 1440px;
-    flex-grow: 1;
-    min-width: 0;
-}
 
 .meal-category {
     height: 60px;
     display: flex;
     flex-direction: row;
     margin: 24px 0px 24px 0px;
-    /* position: relative; */
-    /* left: 50%; */
-    /* right: 50%; */
-    /* margin-left: -50vw; */
-    /* margin-right: -50vw; */
-    gap: 16px;
-    /* background-color: chocolate; */
     align-items: center;
     justify-content: flex-start;
     padding-left: 40px;
@@ -121,7 +89,6 @@ main {
         width: 90px;
         height: 90px;
         display: flex;
-        /* margin-left: 167px; */
         transform: translateY(-5px);
     }
     h2 {
@@ -133,6 +100,7 @@ main {
         white-space: nowrap;
     }
 }
+
 .meal-category::before {
     content: ""; /* Pseudoelement wird aktiviert */
     position: absolute;
@@ -142,6 +110,7 @@ main {
     clip-path: inset(0 -100vmax);
     z-index: -1;
 }
+
 .category-size {
     font-weight: 400;
 }
@@ -150,6 +119,7 @@ main {
     padding: 0px 20px 10px 20px;
     margin-left: 119px;
 }
+
 .dish {
     display: flex;
     width: 100%;
@@ -162,7 +132,6 @@ main {
     img {
         height: 120px;
         padding: 15px;
-        /* object-fit: cover; */
     }
     h3 {
         color: #363534;
@@ -174,12 +143,10 @@ main {
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         line-height: 1.2;
-        /* margin: 0; */
     }
     p {
         color: #363534;
         width: 100%;
-        /* margin: 0; */
         font-family: "Palanquin";
         font-weight: 500;
         font-size: 1em;
@@ -229,42 +196,26 @@ main {
     font-size: 1.5em;
 }
 
-.order-button {
-    display: flex;
-    width: 320px;
-    height: 64px;
-    justify-content: center;
-    background-color: #e76c1f;
-    border-radius: 60px;
-    border: none;
-    align-self: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 16px;
-    cursor: pointer;
-    /* flex-shrink: 0; */
-}
 
 .content-basket {
-    /* display: flex;
-    align-items: center; */
     flex-shrink: 0;
     align-self: flex-start;
     height: 100%;
     margin-left: auto;
 }
+
 .basket-total {
     margin: 0;
 }
+
 .basket .order-button > p {
     width: 100%;
     color: #fbfbfb;
     font-family: palanquin;
     font-weight: 700;
     font-size: 2em;
-    /* padding: 13px 0; */
 }
+
 .basket {
     position: sticky;
     height: 800px;
@@ -284,6 +235,7 @@ main {
     gap: 0px;
     overflow: hidden;
 }
+
 .basket-empty {
     display: flex;
     flex-direction: column;
@@ -301,6 +253,7 @@ main {
 .basket-empty > p {
     font-size: 1.5em;
 }
+
 .basket > h2 {
     display: flex;
     justify-content: center;
@@ -311,6 +264,7 @@ main {
     font-weight: 700;
     font-size: 2em;
 }
+
 .basket p {
     display: flex;
     justify-content: center;
@@ -322,6 +276,7 @@ main {
     font-size: 1.5rem;
     text-align: center;
 }
+
 .basket img {
     display: flex;
     justify-content: center;
@@ -342,12 +297,10 @@ main {
     background-color: #fdeadc;
     color: #363534;
     border-radius: 20px;
-    /* border: none; */
     font-family: palanquin;
     font-weight: 700;
     font-size: 1.375em;
     margin: 8px 0;
-    /* align-items: center; */
     gap: 12px;
     flex-direction: column;
     img {
@@ -380,6 +333,7 @@ main {
     justify-content: center;
     align-items: center;
 }
+
 .basket-meal-controls {
     display: flex;
     align-items: center;
@@ -400,6 +354,7 @@ main {
     align-items: center;
     gap: 12px;
 }
+
 .trash-top {
     border: none;
     background: none;
@@ -415,6 +370,7 @@ main {
     font-size: 1.25em;
     margin-bottom: 8px;
 }
+
 .total-price {
     font-family: palanquin;
     font-weight: 700;
@@ -422,10 +378,7 @@ main {
     margin-top: 8px;
 }
 
-button {
-    cursor: pointer;
-    /* display: none; */
-}
+
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -435,10 +388,6 @@ button {
     justify-content: center;
     z-index: 2000;
 }
-
-/* .modal-overlay::backdrop {
-    display: none;
-} */
 
 .dialog {
     background: #363534;
@@ -459,7 +408,6 @@ button {
     border: none;
     background: none;
     color: #fdeadc;
-    /* font-size: 2rem; */
     line-height: 1;
     img {
         height: 16px;
@@ -502,6 +450,7 @@ button {
     translate: 0 20px;
     align-items: center;
 }
+
 .copyright {
     display: flex;
     flex-direction: row;
@@ -517,6 +466,7 @@ button {
     width: 25px;
     height: 25px;
 }
+
 .mobile-bar-badge {
     position: absolute;
     top: 8px;
@@ -534,7 +484,7 @@ button {
     text-align: center;
 }
 
-/* ================ hier beginnen die media quiries ==================================== */
+/* ================ hier beginnen die Media Queries ==================================== */
 
 @media (max-width: 1300px) {
     main {
@@ -559,15 +509,12 @@ button {
     .meal-section {
         margin-left: 0;
     }
-
     .content_wrapper {
         gap: 0;
     }
-
     .basket {
         width: 200px;
     }
-
     .meal-category h2 {
         font-size: 2em;
     }
@@ -585,7 +532,6 @@ button {
         margin: 0;
         margin-bottom: 16px;
         cursor: pointer;
-        /* flex-shrink: 0; */
     }
     .basket .order-button > p {
         font-size: 1.5rem;
@@ -597,7 +543,6 @@ button {
     body {
         padding-bottom: calc(64px + env(safe-area-inset-bottom));
     }
-
     .mobile-bar {
         display: flex;
         position: fixed;
@@ -618,7 +563,6 @@ button {
         font-size: 1.5em;
         padding: 13px 18px;
     }
-
     .mobile-bar-item {
         flex: 1;
         display: flex;
@@ -626,7 +570,6 @@ button {
         justify-content: center;
         color: #fdeadc;
     }
-
     .mobile-bar-item svg {
         width: 26px;
         height: 26px;
@@ -644,7 +587,6 @@ button {
         width: 160px;
         margin-top: 60px;
     }
-
     .content-basket {
         display: none;
         position: fixed;
@@ -656,7 +598,6 @@ button {
         margin: 0;
         z-index: 999;
     }
-
     .content-basket {
         display: none;
     }
@@ -664,7 +605,6 @@ button {
     .content-basket.open {
         display: block;
     }
-
     .basket {
         position: static;
         width: 100%;
@@ -672,7 +612,7 @@ button {
         max-height: 60vh;
         border-radius: 30px 30px 0 0;
     }
-        .footer-tags {
+    .footer-tags {
         flex-direction: column;
         height: auto;
         gap: 8px;
@@ -680,21 +620,16 @@ button {
         padding: 0;
         font-size: 1.125px;
     }
-
-    .footer-tags > p:nth-of-type(1) {
+    .footer-tags > p:nth-of-type(1) { /* Sortierung der Wörter */
         order: 1;
     }
-
     .footer-tags > p:nth-of-type(2) {
         order: 2;
     }
-
     .copyright {
         order: 3;
     }
-
 }
-
 
 @media (max-width: 480px) {
     .dish {
@@ -702,26 +637,22 @@ button {
         align-items: stretch;
         gap: 0;
     }
-
     .dish img {
         width: 100%;
         height: auto;
         padding: 8px;
         border-radius: 12px 12px 12px 12px;
     }
-
     .meal-text {
         flex-direction: column;
         padding: 0 16px 16px;
     }
     .meal-category {
-        /* height: auto; */
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 4px;
         margin: 16px 0;
-
         justify-content: flex-end;
         padding: 0 0 8px;
         img {
@@ -742,18 +673,15 @@ button {
         box-shadow: none;
         clip-path: none;
     }
-
     .order {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         margin-left: 0;
     }
-
     .order .price {
         width: auto;
     }
-
     .order button {
         width: auto;
         padding: 8px 16px;
@@ -766,7 +694,6 @@ button {
         font-size: 1.5em;
         padding: 13px 18px;
     }
-
     .logo-evaluation {
         flex-direction: column-reverse;
         justify-content: center;
@@ -781,7 +708,6 @@ button {
         padding: 0 16px;
         translate: none;
     }
-
     .footer p {
         font-size: 0.875rem;
     }

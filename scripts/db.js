@@ -1,6 +1,4 @@
-// json Struktur muss immer zuerst geladen werden!!
-
-
+// Hinweis: json Struktur muss immer zuerst geladen werden!!
 
 const myDishes = {
     "Burger & Sandwiches": [
@@ -9,19 +7,14 @@ const myDishes = {
         { id: 3, name:'Beef red burger', price: 14.9, description: 'Beef, Cheese, Tomatoes, Lettuce, Onion', image: `./assets/img/Beef Red Burger.png` },
         { id: 4, name:'Big chicken burger', price: 15.9, description: 'Chicken, Cheese, Tomatoes, Lettuce, Onion, Bell pepper', image: `./assets/img/Chicken Burger.png` },
     ],
-    
-    
-    
+
     "Pizza (30cm)": [
         { id: 5, name:'Pizza Margherita', price: 11.9, description: 'Tomato Sauce, Mozzarella', image: `./assets/img/Margherita.png` },
         { id: 6, name:'Pizza Chorizo', price: 13.9, description: 'Tomato slices, Mozzarella, Chorizo', image: `./assets/img/Chorizo.png` },
         { id: 7, name:'Pizza Funghi', price: 12.9, description: 'Red onion, Olives, Button Mushrooms, Mozzarella', image: `./assets/img/Funghi.png` },
         { id: 8, name:'Quattro Formaggi with chicken', price: 15.9, description: 'Chicken, Mozzarella, Gorgonzola, Fontina, Parmigiano Reggiano', image: `./assets/img/Quattro Formaggi.png` },
     ],
-    
-    
-    
-    
+
     "Salad": [
         { id: 9, name:'Warm beef arugula salad', price: 16.9, description: 'Beef, Arugula, Field salad, Greek feta, Cherry tomatoes, Sun-dried Tomatoes, Balsamic-vinegar dressing', image: `./assets/img/Beef Salad.png` },
         { id: 10, name:'Mini green salad', price: 7.9, description: 'Green salad, Cucumber, Carrots, Parsley, Radishes', image: `./assets/img/Green Salad.png` },

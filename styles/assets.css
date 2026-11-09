@@ -1,1 +1,21 @@
 /* Hier werden z.B. Buttons designed, .... */
+
+button {
+    cursor: pointer;
+}
+
+.order-button {
+    display: flex;
+    width: 320px;
+    height: 64px;
+    justify-content: center;
+    background-color: #e76c1f;
+    border-radius: 60px;
+    border: none;
+    align-self: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 16px;
+    cursor: pointer;
+}

@@ -2,34 +2,23 @@
 <html lang="de">
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         <!--für mediaqueries für Handy-->
-        <title>Document</title>
+        <title>BestellApp</title>
         <link rel="icon" type="image/png" href="./assets/img/Logo 02.png" />
         <script src="./scripts/db.js"></script>
         <script src="./scripts/templates.js"></script>
         <script src="script.js" defer></script>
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="./styles/fonts.css" />
-        <!-- <link rel="stylesheet" href="./styles/layout.css" /> -->
-        <!-- <link rel="stylesheet" href="./styles/fonts.css" /> -->
-        <!-- <link rel="stylesheet" href="./styles/components.css" /> -->
+        <link rel="stylesheet" href="./styles/assets.css" />
+        <link rel="stylesheet" href="./styles/basket.css" />
+        <link rel="stylesheet" href="./styles/standard.css" />
     </head>
     <body onload="init()">
         <header>
-            <img
-                class="bestell-app-logo"
-                src="./assets/icons/BestellAppLogo.svg"
-                alt="Foto logo"
-            />
-            <img
-                class="menu-bar"
-                src="./assets/icons/menu.svg"
-                alt="Foto logo"
-            />
+            <img class="bestell-app-logo" src="./assets/icons/BestellAppLogo.svg" alt="Foto logo" />
+            <img class="menu-bar" src="./assets/icons/menu.svg" alt="Foto logo" />
         </header>
         <div class="header-picture">
             <img src="./assets/img/header photo.png" alt="header foto" />
@@ -61,10 +50,7 @@
             <div class="footer">
                 <div class="footer-tags">
                     <div class="copyright">
-                        <img
-                            src="./assets/icons/copyright.svg"
-                            alt="Copyright Bild"
-                        />
+                        <img src="./assets/icons/copyright.svg" alt="Copyright Bild" />
                         <p>2025 BurgerHouse</p>
                     </div>
                     <p>Imprint</p>
@@ -74,36 +60,16 @@
         </footer>
         <nav class="mobile-bar" aria-label="Hauptnavigation">
             <a class="mobile-bar-item" aria-label="Startseite">
-                <img
-                    class="footer-icons"
-                    src="./assets/icons/home.svg"
-                    alt="Foto home"
-                />
+                <img class="footer-icons" src="./assets/icons/home.svg" alt="Foto home" />
             </a>
             <a class="mobile-bar-item" aria-label="Kundenkonto">
-                <img
-                    class="footer-icons"
-                    src="./assets/icons/person.svg"
-                    alt="Foto person"
-                />
+                <img class="footer-icons" src="./assets/icons/person.svg" alt="Foto person" />
             </a>
             <a class="mobile-bar-item" aria-label="Favoriten">
-                <img
-                    class="footer-icons"
-                    src="./assets/icons/takeout_dining.svg"
-                    alt="Foto chart"
-                />
+                <img class="footer-icons" src="./assets/icons/takeout_dining.svg" alt="Foto chart" />
             </a>
-            <a
-                class="mobile-bar-item"
-                aria-label="Warenkorb"
-                onclick="toggleBasket(event)"
-            >
-                <img
-                    class="footer-icons"
-                    src="./assets/icons/basket_small.svg"
-                    alt="Foto take out dining"
-                />
+            <a class="mobile-bar-item" aria-label="Warenkorb" onclick="toggleBasket(event)" >
+                <img class="footer-icons" src="./assets/icons/basket_small.svg" alt="Foto take out dining" />
                 <span class="mobile-bar-badge" id="count-basket-footer"></span>
             </a>
         </nav>

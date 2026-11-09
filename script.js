@@ -5,12 +5,15 @@ const CATEGORY_ICONS = {
     "Pizza (30cm)": "./assets/icons/Pizza.svg",
     Salad: "./assets/icons/Salad.svg",
 };
+
+
 function init() {
     renderMeals();
     renderBasket();
 }
 
 //==================================  Speisekarte  ===============================================================================
+
 
 function renderMeals() {
     document.getElementById("myDishes").innerHTML = ""; // geleert werden muss vor der Schleife
@@ -24,6 +27,7 @@ function renderMeals() {
     }
 }
 
+
 function addToBasket(category, id) {
     const meal = myDishes[category].find((dish) => dish.id === id); // sucht aus dem Json
     const existingMeal = basketDishes.find((dish) => dish.id === id); //prüft, ob schon vorhanden
@@ -35,7 +39,9 @@ function addToBasket(category, id) {
     updateView();
 }
 
+
 //==================================  Warenkorb  ===============================================================================
+
 
 function renderBasket() {
     updateCounterBasketFooter();
@@ -49,12 +55,12 @@ function renderBasket() {
         mealsHtml += setTemplateBasketMeals(dish);
     }
 
+
 basketContainer.innerHTML = `
 <h2>Your Basket</h2>
 <div class="basket-items">${mealsHtml}</div>
 ${setTemplateOrderTotal(calcPrice())}`
     }
-
 
 
 function calcPrice() {
@@ -65,6 +71,7 @@ function calcPrice() {
     return total;
 }
 
+
 function increaseAmount(id) {
     const dish = basketDishes.find((dish) => dish.id === id);
     if (dish) {
@@ -72,6 +79,7 @@ function increaseAmount(id) {
     }
     updateView();
 }
+
 
 function decreaseAmount(id) {
     const dish = basketDishes.find((dish) => dish.id === id);
@@ -84,22 +92,23 @@ function decreaseAmount(id) {
     updateView();
 }
 
+
 function getBasketAmount(id){
     const dish = basketDishes.find((item) => item.id === id);
     return dish ? dish.amount : 0;
 }
+
+
 function removeFromBasket(id){
     basketDishes = basketDishes.filter((dish) => dish.id !==id);
     updateView();
     }
 
 
-
-function toggleBasket(event){
+function toggleBasket(event){ // Basket kann ein und ausgeblendet werden
     event.preventDefault();
     document.querySelector(".content-basket").classList.toggle("open");
 }
-
 
 
 function updateView(){
@@ -107,11 +116,15 @@ function updateView(){
     renderBasket();
     
 }
+
+
 function order() {
     basketDishes = []; // leert den Warenkorb nach dem Bestellen
     updateView();
     document.getElementById("orderConfirmed").innerHTML = setTemplateOrderConfirmed();
 }
+
+
 function closeDialog(){
     document.getElementById("orderConfirmed").innerHTML = "";
 }

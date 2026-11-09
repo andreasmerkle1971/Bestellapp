@@ -7,6 +7,7 @@ function formatPrice(price) {
     }).format(price);
 }
 
+
 function setTemplateCategory(categoryId, iconPath, category) {
     const title = category.replace(
         /\(.*\)/,
@@ -20,6 +21,7 @@ function setTemplateCategory(categoryId, iconPath, category) {
             </div>
         </div>`;
 }
+
 
 function setTemplateMeals(meal, category) {
     const amount = getBasketAmount(meal.id);
@@ -42,6 +44,7 @@ function setTemplateMeals(meal, category) {
         </div>`;
 }
 
+
 function setTemplateBasketMeals(dish) {
     const isOnlyOne = dish.amount === 1; // summe im warenkorb
     const trashTop = isOnlyOne
@@ -52,7 +55,6 @@ function setTemplateBasketMeals(dish) {
         ? `<button class="icon-btn" onclick="removeFromBasket(${dish.id})"><img src="./assets/icons/delete.svg" alt="Löschen"></button>`
         : `<button class="icon-btn" onclick="decreaseAmount(${dish.id})"><img src="./assets/icons/-.svg" alt="Weniger"></button>`;
     return `
-   
         <div class="basket-meal-card">
             <div class="basket-meal-top">
             <span>${dish.amount}x ${dish.name}</span>
@@ -66,21 +68,19 @@ function setTemplateBasketMeals(dish) {
                 <span>${formatPrice(dish.price * dish.amount)}</span>
         </div>
         </div>
-    
-
         `;
 }
 
-function updateCounterBasketFooter(){
 
+function updateCounterBasketFooter() {
     let count = 0;
-    for (const dish of basketDishes){
+    for (const dish of basketDishes) {
         count += dish.amount;
-
     }
     const countBasketFooter = document.getElementById("count-basket-footer");
-    countBasketFooter.textContent = count > 0 ? count :  "";
+    countBasketFooter.textContent = count > 0 ? count : "";
 }
+
 
 function setTemplateOrderTotal(totalPrice) {
     return `
@@ -107,20 +107,21 @@ function setTemplateOrderTotal(totalPrice) {
         `;
 }
 
+
 function setTemplateOrderConfirmed() {
     return /*HTML*/ `
     <div class="modal-overlay" onclick="closeDialog()"> 
-    <div class="dialog" onclick="event.stopPropagation()">
-        <button class="dialog-close" onclick="closeDialog()" aria-label="Schließen"><img src="./assets/icons/close.svg" alt=""></button>
-    
-    <img src="./assets/icons/ordered.svg" alt="bestellt">
-    <h2>Order Confirmed!</h2>
-    <h3>Your food is on the way!</h3>
-    </div>    
+        <div class="dialog" onclick="event.stopPropagation()">
+            <button class="dialog-close" onclick="closeDialog()" aria-label="Schließen"><img src="./assets/icons/close.svg" alt=""></button>
+            <img src="./assets/icons/ordered.svg" alt="bestellt">
+            <h2>Order Confirmed!</h2>
+            <h3>Your food is on the way!</h3>
+        </div>    
     </div>    
     
     `;
 }
+
 
 function setTemplateEmptyBasket() {
     //so sieht der leere Warenkorb aus
