@@ -616,6 +616,14 @@ button {
         box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
         z-index: 1000;
     }
+    .basket .order-button > p {
+    width: 100%;
+    color: #fbfbfb;
+    font-family: palanquin;
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 13px 18px;
+}
     
     .mobile-bar-item {
         flex: 1;
@@ -665,4 +673,125 @@ button {
     }
 }
 
+@media (max-width: 480px) {
+    .dish {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
 
+    .dish img {
+        width: 100%;
+        height: auto;
+        padding: 8px;
+        border-radius: 12px 12px 12px 12px;
+    }
+
+    .meal-text {
+        flex-direction: column;
+        padding: 0 16px 16px;
+    }
+    .meal-category{
+        /* height: auto; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        margin: 16px 0;
+
+                
+        justify-content: flex-end;
+        padding: 0 0 8px;
+        img{
+            width: 60px;
+            height: 60px;
+            transform: none;
+            /* margin-top: -130px; */
+        }
+    }
+    .meal-category h2 {
+        font-size: 1.75em;
+        line-height: 1;
+        padding: 0;
+        white-space: nowrap;
+    
+    }
+        .meal-category::before {
+        inset: 0 -20px;
+        box-shadow: none;
+        clip-path: none;
+    }
+    
+
+    .order {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 0;
+    }
+
+    .order .price {
+        width: auto;
+    }
+
+    .order button {
+        width: auto;
+        padding: 8px 16px;
+    }
+.basket .order-button > p {
+    width: 100%;
+    color: #fbfbfb;
+    font-family: palanquin;
+    font-weight: 700;
+    font-size: 1.5em;
+    padding: 13px 18px;
+}
+
+.logo-evaluation{
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0 0 0;
+    gap: 0;
+   
+}
+    .footer-tags {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+        padding: 0 16px;
+        translate: none;
+    }
+
+    .footer p {
+        font-size: 0.875rem;
+    }
+    .logo-evaluation > h1,
+    .dark {
+        font-size: 2.5rem;
+    }
+.description-shop{
+
+    font-size: 1.375em;
+    padding: 0 8px 32px 8px;
+}
+ .header-picture > img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
+display: block;
+padding: 8px;
+border-radius: 16px;
+}
+.burger-logo img {
+    display: flex;
+    justify-content: center;
+    /* margin-top: -130px; */
+    height: 120px;
+    width: 120px;
+    margin-top: 60px;
+}
+    .meal-section {
+    align-items: center;
+    }
