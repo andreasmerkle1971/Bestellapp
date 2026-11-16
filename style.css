@@ -122,6 +122,12 @@
 }
 
 @media (max-width: 480px) {
+    header {
+        height: 79px;
+    }
+    .menu-bar{
+        display: none;
+    }
     .dish {
         flex-direction: column;
         align-items: stretch;
