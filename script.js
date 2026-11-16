@@ -1,6 +1,5 @@
 const DELIVERY_FEE = 4.99;
 
-
 function formatPrice(price) {
     return new Intl.NumberFormat("de-DE", {
         style: "currency",
@@ -10,13 +9,11 @@ function formatPrice(price) {
     }).format(price);
 }
 
-
 const CATEGORY_ICONS = {
     "Burger & Sandwiches": "./assets/icons/Burger.svg",
     "Pizza (30cm)": "./assets/icons/Pizza.svg",
     Salad: "./assets/icons/Salad.svg",
 };
-
 
 function init() {
     renderMeals();
@@ -25,18 +22,23 @@ function init() {
 
 //==================================  Speisekarte  ===============================================================================
 
-
 function renderMeals() {
     document.getElementById("myDishes").innerHTML = ""; // geleert werden muss vor der Schleife
     for (const category in myDishes) {
         const iconPath = CATEGORY_ICONS[category];
         const categoryId = category.replace(/[^a-zA-Z0-9]/g, "-"); // damit die ID korrekt ist, werden die Sonderzeichen ersetzt
-        document.getElementById("myDishes").innerHTML += setTemplateCategory(categoryId, iconPath, category, getCategoryTitle(category));
+        document.getElementById("myDishes").innerHTML += setTemplateCategory(
+            categoryId,
+            iconPath,
+            category,
+            getCategoryTitle(category),
+        );
         for (const meal of myDishes[category]) {
-        document.getElementById(categoryId + "-container").innerHTML += setTemplateMeals(getMealViewData(meal), category);        }
+            document.getElementById(categoryId + "-container").innerHTML +=
+                setTemplateMeals(getMealViewData(meal), category);
+        }
     }
 }
-
 
 function addToBasket(category, id) {
     const meal = myDishes[category].find((dish) => dish.id === id); // sucht aus dem Json
@@ -45,15 +47,13 @@ function addToBasket(category, id) {
         existingMeal.amount++; // Anzahl im Warenkorb wird erhöht
         updateBasketNumbers(id); // nur die Zahlen werden aktualisiert
     } else {
-        basketDishes.push({ ...meal, amount: 1 }); 
+        basketDishes.push({ ...meal, amount: 1 });
         renderBasket(); // rendern einer neuen Karte
         updateMealButton(id);
     }
 }
 
-
 //==================================  Warenkorb  ===============================================================================
-
 
 function renderBasket() {
     updateCounterBasketFooter();
@@ -63,15 +63,14 @@ function renderBasket() {
         return;
     }
     let mealsHtml = "";
-    for (const dish of basketDishes){
-        mealsHtml += setTemplateBasketMeals(getBasketMealViewData(dish));  
+    for (const dish of basketDishes) {
+        mealsHtml += setTemplateBasketMeals(getBasketMealViewData(dish));
     }
     basketContainer.innerHTML = `
     <h2>Your Basket</h2>
     <div class="basket-items">${mealsHtml}</div>
-    ${setTemplateOrderTotal(getTotalsViewData())}`
+    ${setTemplateOrderTotal(getTotalsViewData())}`;
 }
-
 
 function calcPrice() {
     let total = 0;
@@ -80,7 +79,6 @@ function calcPrice() {
     }
     return total;
 }
-
 
 function getTotalsViewData() {
     const subtotal = calcPrice();
@@ -92,7 +90,6 @@ function getTotalsViewData() {
     };
 }
 
-
 function updateCounterBasketFooter() {
     let count = 0;
     for (const dish of basketDishes) {
@@ -102,37 +99,40 @@ function updateCounterBasketFooter() {
     countBasketFooter.textContent = count > 0 ? count : "";
 }
 
-
 function updateMealButton(id) {
     const btn = document.getElementById(`meal-btn-${id}`);
     if (!btn) return;
     btn.textContent = getMealLabel(id);
 }
 
-
 function updateTotals() {
     const t = getTotalsViewData();
     document.getElementById("basket-subtotal").textContent = t.subtotalText;
     document.getElementById("basket-total").textContent = t.totalText;
-    document.getElementById("basket-buy-text").textContent = `Buy now (${t.totalText})`;
+    document.getElementById("basket-buy-text").textContent =
+        `Buy now (${t.totalText})`;
     updateCounterBasketFooter();
 }
-
 
 function updateBasketNumbers(id) {
     const dish = basketDishes.find((d) => d.id === id); //sucht Gericht
     if (!dish) return; // Abbruch, wenn keins existiert
-    if (dish.amount <= 2) { // Position des Löschen buttons oben rechts geht in beide Richtungen
-        document.getElementById(`basket-meal-${id}`).innerHTML = setTemplateBasketMealInner(getBasketMealViewData(dish));
-        } else {
-            document.getElementById(`basket-title-amount-${id}`).textContent = dish.amount;
-            document.getElementById(`basket-amount-${id}`).textContent = dish.amount;
-            document.getElementById(`basket-price-${id}`).textContent = formatPrice(dish.price * dish.amount);
-        }
-        updateTotals();
-        updateMealButton(id);
+    if (dish.amount <= 2) {
+        // Position des Löschen buttons oben rechts geht in beide Richtungen
+        document.getElementById(`basket-meal-${id}`).innerHTML =
+            setTemplateBasketMealInner(getBasketMealViewData(dish));
+    } else {
+        document.getElementById(`basket-title-amount-${id}`).textContent =
+            dish.amount;
+        document.getElementById(`basket-amount-${id}`).textContent =
+            dish.amount;
+        document.getElementById(`basket-price-${id}`).textContent = formatPrice(
+            dish.price * dish.amount,
+        );
+    }
+    updateTotals();
+    updateMealButton(id);
 }
-
 
 function increaseAmount(id) {
     const dish = basketDishes.find((dish) => dish.id === id);
@@ -141,32 +141,28 @@ function increaseAmount(id) {
     updateBasketNumbers(id);
 }
 
-
 function decreaseAmount(id) {
     const dish = basketDishes.find((dish) => dish.id === id);
     if (!dish) return;
     dish.amount--;
     if (dish.amount === 0) {
         basketDishes = basketDishes.filter((d) => d.id !== id);
-        renderBasket();         
+        renderBasket();
         updateMealButton(id);
         return;
     }
-    updateBasketNumbers(id);   // nur Zahlen
+    updateBasketNumbers(id); // nur Zahlen
 }
 
-
-function getBasketAmount(id){
+function getBasketAmount(id) {
     const dish = basketDishes.find((item) => item.id === id);
     return dish ? dish.amount : 0;
 }
-
 
 function getMealLabel(id) {
     const amount = getBasketAmount(id);
     return amount > 0 ? `Added ${amount}` : "Add to basket";
 }
-
 
 function getMealViewData(meal) {
     return {
@@ -176,13 +172,12 @@ function getMealViewData(meal) {
     };
 }
 
-
 function getCategoryTitle(category) {
     return category.replace(/\(.*\)/, '<span class="category-size">$&</span>'); // 30cm Problem
 }
 
-
-function getBasketMealViewData(dish) { // prüfe die Summe
+function getBasketMealViewData(dish) {
+    // prüfe die Summe
     const isOnlyOne = dish.amount === 1;
     return {
         id: dish.id,
@@ -196,35 +191,31 @@ function getBasketMealViewData(dish) { // prüfe die Summe
     };
 }
 
-
-function removeFromBasket(id){
-    basketDishes = basketDishes.filter((dish) => dish.id !==id);
+function removeFromBasket(id) {
+    basketDishes = basketDishes.filter((dish) => dish.id !== id);
     renderBasket();
     updateMealButton(id);
-    }
+}
 
-
-function toggleBasket(event){ // Basket kann ein und ausgeblendet werden
+function toggleBasket(event) {
+    // Basket kann ein und ausgeblendet werden
     event.preventDefault();
     document.querySelector(".content-basket").classList.toggle("open");
 }
 
-
-function updateView(){
+function updateView() {
     renderMeals();
     renderBasket();
-    
 }
-
 
 function order() {
     basketDishes = []; // leert den Warenkorb nach dem Bestellen
     updateView();
     document.querySelector(".content-basket").classList.remove("open"); // läßt Warenkorb verschwinden
-    document.getElementById("orderConfirmed").innerHTML = setTemplateOrderConfirmed();
+    document.getElementById("orderConfirmed").innerHTML =
+        setTemplateOrderConfirmed();
 }
 
-
-function closeDialog(){
+function closeDialog() {
     document.getElementById("orderConfirmed").innerHTML = "";
 }

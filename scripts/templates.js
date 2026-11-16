@@ -8,7 +8,6 @@ function setTemplateCategory(categoryId, iconPath, category, title) {
         </div>`;
 }
 
-
 function setTemplateMeals(meal, category) {
     return /*html*/ `
         <div class="dish">
@@ -28,11 +27,10 @@ function setTemplateMeals(meal, category) {
         </div>`;
 }
 
-
-function setTemplateBasketMeals(d) { // äußerer Rahmen des Baskets
-    return `<div class="basket-meal-card" id="basket-meal-${d.id}">${setTemplateBasketMealInner(d)}</div>`;
+function setTemplateBasketMeals(d) {
+    // äußerer Rahmen des Baskets
+    return /*html*/ `<div class="basket-meal-card" id="basket-meal-${d.id}">${setTemplateBasketMealInner(d)}</div>`;
 }
-
 
 function setTemplateTrashTop(id) {
     return /*HTML*/ `
@@ -41,8 +39,8 @@ function setTemplateTrashTop(id) {
         </button>`;
 }
 
-
-function setTemplateBasketMealInner(d) { // innerer Bereich, getrennt für gezielte Updates
+function setTemplateBasketMealInner(d) {
+    // innerer Bereich, getrennt für gezielte Updates
     return /*HTML*/ `
         <div class="basket-meal-top">
             <span><span id="basket-title-amount-${d.id}">${d.amount}</span>x ${d.name}</span>
@@ -61,7 +59,6 @@ function setTemplateBasketMealInner(d) { // innerer Bereich, getrennt für gezie
             <span id="basket-price-${d.id}">${d.priceText}</span>
         </div>`;
 }
-
 
 function setTemplateOrderTotal(t) {
     return /*HTML*/ `
@@ -87,7 +84,6 @@ function setTemplateOrderTotal(t) {
     </div>`;
 }
 
-
 function setTemplateOrderConfirmed() {
     return /*HTML*/ `
     <div class="modal-overlay" onclick="closeDialog()"> 
@@ -102,10 +98,9 @@ function setTemplateOrderConfirmed() {
     `;
 }
 
-
 function setTemplateEmptyBasket() {
     //so sieht der leere Warenkorb aus
-    return `
+    return /*HTML*/ `
     <div class="basket-empty"> 
         <h2>Your Basket</h2>
         <p>Nothing here yet. Go ahead and choose something delicious!</p>
