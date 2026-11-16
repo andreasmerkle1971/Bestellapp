@@ -1,14 +1,10 @@
 /* style.css für den globalen style und Struktur */
 
-
 /* ================ hier beginnen die Media Queries ==================================== */
 
 @media (max-width: 1300px) {
     main {
         min-width: 0;
-    }
-    .basket {
-        width: 340px;
     }
     .meal-category {
         h2 {
@@ -29,15 +25,24 @@
     .content_wrapper {
         gap: 0;
     }
-    .basket {
-        width: 200px;
+    .dish {
+        display: flex;
+        flex-direction: column;
+    }
+    .meal-text {
+        width: 100%;
+        display: flex;
+        flex: 1;
+        padding-right: 0px;
+        gap: 16px;
+        justify-content: space-around;
+        padding: 8px;
     }
     .meal-category h2 {
         font-size: 2em;
     }
     .order-button {
-        width: auto;
-        
+        min-width: auto;
     }
     .basket .order-button > p {
         font-size: 1.5rem;
@@ -45,7 +50,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     body {
         padding-bottom: calc(64px + env(safe-area-inset-bottom));
     }
@@ -100,7 +105,7 @@
         position: static;
         width: 100%;
         height: auto;
-        max-height: 60vh;
+        max-height: 90vh;
         border-radius: 30px 30px 0 0;
     }
     .footer-tags {
@@ -110,7 +115,8 @@
         translate: none;
         padding: 0;
     }
-    .footer-tags > p:nth-of-type(1) { /* Sortierung der Wörter */
+    .footer-tags > p:nth-of-type(1) {
+        /* Sortierung der Wörter */
         order: 1;
     }
     .footer-tags > p:nth-of-type(2) {
@@ -125,7 +131,7 @@
     header {
         height: 79px;
     }
-    .menu-bar{
+    .menu-bar {
         display: none;
     }
     .dish {
@@ -217,5 +223,4 @@
         width: 120px;
         margin-top: 60px;
     }
-
 }

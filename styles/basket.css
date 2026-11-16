@@ -3,7 +3,7 @@
 .content-basket {
     flex-shrink: 0;
     align-self: stretch;
-        margin-left: auto;
+    margin-left: auto;
 }
 
 .basket-total {
@@ -111,7 +111,7 @@
 
 .basket-items {
     flex: 1; /* nimmt den ganzen freien Platz */
-    min-height: 0; /* wichtig, sonst scrollt ein Flex-Kind nicht */
+    min-height: 200px; /* wichtig, sonst scrollt ein Flex-Kind nicht */
     overflow-y: auto;
     padding-right: 8px; /* Platz für die Scrollbar */
     scrollbar-width: thin;
@@ -193,7 +193,6 @@
     margin-bottom: 16px;
     cursor: pointer;
 }
-
 
 .modal-overlay {
     position: fixed;

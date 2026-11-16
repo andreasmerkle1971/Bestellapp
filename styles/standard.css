@@ -25,7 +25,7 @@ header {
     padding-left: 60px;
     padding-right: 60px;
 }
-.header-content-limit{
+.header-content-limit {
     width: 100%;
     max-width: 1440px;
     display: flex;
@@ -120,6 +120,10 @@ button {
     gap: 20px;
     justify-content: space-between;
     align-items: flex-start;
+}
+.meal-category {
+    display: flex;
+    gap: 16px;
 }
 
 .footer {
