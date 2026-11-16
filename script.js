@@ -33,10 +33,12 @@ function addToBasket(category, id) {
     const existingMeal = basketDishes.find((dish) => dish.id === id); //prüft, ob schon vorhanden
     if (existingMeal) {
         existingMeal.amount++; // Anzahl im Warenkorb wird erhöht
+        updateBasketNumbers(id); // nur die Zahlen werden aktualisiert
     } else {
-        basketDishes.push({ ...meal, amount: 1 }); // Meal wird neu hinzugefügt
+        basketDishes.push({ ...meal, amount: 1 }); 
+        renderBasket(); // rendern einer neuen Karte
+        updateMealButton(id);
     }
-    updateView();
 }
 
 
@@ -62,34 +64,66 @@ basketContainer.innerHTML = `
 ${setTemplateOrderTotal(calcPrice())}`
     }
 
-
+    
 function calcPrice() {
-    let total = 0;
-    for (const dish of basketDishes) {
-        total += dish.price * dish.amount;
+        let total = 0;
+        for (const dish of basketDishes) {
+            total += dish.price * dish.amount;
+        }
+        return total;
     }
-    return total;
+
+function updateMealButton(id) {
+    const btn = document.getElementById(`meal-btn-${id}`);
+    if(!btn) return; // Absicherung, falls Button nocht existiert, passiert nichts, keinen Fehler
+    const amount = getBasketAmount(id);
+    btn.textContent = amount > 0 ? `Added ${amount}` : "Add to basket";
+
+}
+    
+function updateTotals(){ // alle Beträge im Footer mit ID's aktualisieren
+    const subtotal = calcPrice();
+    const total = subtotal + DELIVERY_FEE;
+    document.getElementById("basket-subtotal").textContent = formatPrice(subtotal);
+    document.getElementById("basket-total").textContent = formatPrice(total);
+    document.getElementById("basket-buy-text").textContent = `Buy now (${formatPrice(total)})`;
+    updateCounterBasketFooter();
 }
 
+function updateBasketNumbers(id) {
+    const dish = basketDishes.find((d) => d.id === id); //sucht Gericht
+    if (!dish) return; // Abbruch, wenn keins existiert
+    if (dish.amount <= 2) { // Position des Löschen buttons oben rechts geht in beide Richtungen
+        document.getElementById(`basket-meal-${id}`).innerHTML = setTemplateBasketMealInner(dish);
+        } else {
+            document.getElementById(`basket-title-amount-${id}`).textContent = dish.amount;
+            document.getElementById(`basket-amount-${id}`).textContent = dish.amount;
+            document.getElementById(`basket-price-${id}`).textContent = formatPrice(dish.price * dish.amount);
+        }
+        updateTotals();
+        updateMealButton(id);
+
+}
 
 function increaseAmount(id) {
     const dish = basketDishes.find((dish) => dish.id === id);
-    if (dish) {
-        dish.amount++;
-    }
-    updateView();
+if (!dish) return; // keine Fehler, wenn kein Gericht
+    dish.amount++;
+    updateBasketNumbers(id);
 }
 
 
 function decreaseAmount(id) {
     const dish = basketDishes.find((dish) => dish.id === id);
-    if (dish) {
-        dish.amount--;
-        if (dish.amount === 0) {
-            basketDishes = basketDishes.filter((d) => d.id !== id);
-        }
+ if (!dish) return;
+    dish.amount--;
+    if (dish.amount === 0) {
+        basketDishes = basketDishes.filter((d) => d.id !== id);
+        renderBasket();         
+        updateMealButton(id);
+        return;
     }
-    updateView();
+    updateBasketNumbers(id);   // nur Zahlen
 }
 
 
@@ -101,7 +135,8 @@ function getBasketAmount(id){
 
 function removeFromBasket(id){
     basketDishes = basketDishes.filter((dish) => dish.id !==id);
-    updateView();
+    renderBasket();
+    updateMealButton(id);
     }
 
 

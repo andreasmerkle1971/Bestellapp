@@ -38,15 +38,19 @@ function setTemplateMeals(meal, category) {
                     </div>
                     <div class="order">
                         <p class="price">${formatPrice(meal.price)}</p>
-                        <button onclick="addToBasket('${category}', ${meal.id})">${label}</button>
+                        <button id="meal-btn-${meal.id}" onclick="addToBasket('${category}', ${meal.id})">${label}</button>
                     </div>
                 </div>
         </div>`;
 }
 
 
-function setTemplateBasketMeals(dish) {
-    const isOnlyOne = dish.amount === 1; // summe im warenkorb
+function setTemplateBasketMeals(dish) { // äußerer Rahmen des Baskets
+    return `<div class="basket-meal-card" id="basket-meal-${dish.id}">${setTemplateBasketMealInner(dish)}</div>`;
+}
+
+function setTemplateBasketMealInner(dish){ // innerer Bereich des Baskets, für die Aktualisierungen getrennt vom äußeren Rahmen und mit ID versehen
+    const isOnlyOne = dish.amount === 1; // Summe im Warenkorb
     const trashTop = isOnlyOne
         ? ""
         : `<button class="trash-top" onclick="removeFromBasket(${dish.id})"><img src="./assets/icons/delete.svg" alt="Löschen"></button>`;
@@ -55,18 +59,16 @@ function setTemplateBasketMeals(dish) {
         ? `<button class="icon-btn" onclick="removeFromBasket(${dish.id})"><img src="./assets/icons/delete.svg" alt="Löschen"></button>`
         : `<button class="icon-btn" onclick="decreaseAmount(${dish.id})"><img src="./assets/icons/-.svg" alt="Weniger"></button>`;
     return `
-        <div class="basket-meal-card">
             <div class="basket-meal-top">
-            <span>${dish.amount}x ${dish.name}</span>
+            <span><span id="basket-title-amount-${dish.id}">${dish.amount}</span>x ${dish.name}</span>
             ${trashTop}
             </div>
         <div class="basket-meal-controls">
             <div class="basket-amount"> ${leftButton}
-                <span>${dish.amount}</span>
+                <span id="basket-amount-${dish.id}">${dish.amount}</span>
                 <button class="icon-btn" onclick="increaseAmount(${dish.id})"><img src="./assets/icons/+.svg" alt="Mehr"></button>
                 </div>
-                <span>${formatPrice(dish.price * dish.amount)}</span>
-        </div>
+                <span id="basket-price-${dish.id}">${formatPrice(dish.price * dish.amount)}</span>
         </div>
         `;
 }
@@ -88,7 +90,7 @@ function setTemplateOrderTotal(totalPrice) {
         <div class="basket-total">
             <div class="total-order-section">
             <span>Subtotal:</span>
-            <span>${formatPrice(totalPrice)}</span>
+            <span id="basket-subtotal">${formatPrice(totalPrice)}</span>
             </div>
             <div class="total-order-section">
             <span>Delivery fee:</span>
@@ -97,11 +99,11 @@ function setTemplateOrderTotal(totalPrice) {
                     <hr> 
                         <div class="total-order-section total-price">
                             <strong>Total:</strong>
-                            <strong>${formatPrice(totalPrice + DELIVERY_FEE)}</strong>
+                            <strong id="basket-total">${formatPrice(totalPrice + DELIVERY_FEE)}</strong>
                         </div>
             </div>
             <div onclick="order()" class="order-button">
-                <p>Buy now (${formatPrice(totalPrice + DELIVERY_FEE)})</p>
+                <p id="basket-buy-text">Buy now (${formatPrice(totalPrice + DELIVERY_FEE)})</p>
         </div>
     </div>
         `;
