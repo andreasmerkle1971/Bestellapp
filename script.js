@@ -1,5 +1,16 @@
 const DELIVERY_FEE = 4.99;
 
+
+function formatPrice(price) {
+    return new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    }).format(price);
+}
+
+
 const CATEGORY_ICONS = {
     "Burger & Sandwiches": "./assets/icons/Burger.svg",
     "Pizza (30cm)": "./assets/icons/Pizza.svg",
@@ -20,10 +31,9 @@ function renderMeals() {
     for (const category in myDishes) {
         const iconPath = CATEGORY_ICONS[category];
         const categoryId = category.replace(/[^a-zA-Z0-9]/g, "-"); // damit die ID korrekt ist, werden die Sonderzeichen ersetzt
-        document.getElementById("myDishes").innerHTML += setTemplateCategory(categoryId, iconPath, category);
+        document.getElementById("myDishes").innerHTML += setTemplateCategory(categoryId, iconPath, category, getCategoryTitle(category));
         for (const meal of myDishes[category]) {
-            document.getElementById(categoryId + "-container").innerHTML += setTemplateMeals(meal, category);
-        }
+        document.getElementById(categoryId + "-container").innerHTML += setTemplateMeals(getMealViewData(meal), category);        }
     }
 }
 
@@ -54,47 +64,66 @@ function renderBasket() {
     }
     let mealsHtml = "";
     for (const dish of basketDishes){
-        mealsHtml += setTemplateBasketMeals(dish);
+        mealsHtml += setTemplateBasketMeals(getBasketMealViewData(dish));  
     }
+    basketContainer.innerHTML = `
+    <h2>Your Basket</h2>
+    <div class="basket-items">${mealsHtml}</div>
+    ${setTemplateOrderTotal(getTotalsViewData())}`
+}
 
 
-basketContainer.innerHTML = `
-<h2>Your Basket</h2>
-<div class="basket-items">${mealsHtml}</div>
-${setTemplateOrderTotal(calcPrice())}`
-    }
-
-    
 function calcPrice() {
-        let total = 0;
-        for (const dish of basketDishes) {
-            total += dish.price * dish.amount;
-        }
-        return total;
+    let total = 0;
+    for (const dish of basketDishes) {
+        total += dish.price * dish.amount;
     }
+    return total;
+}
+
+
+function getTotalsViewData() {
+    const subtotal = calcPrice();
+    const total = subtotal + DELIVERY_FEE;
+    return {
+        subtotalText: formatPrice(subtotal),
+        deliveryText: formatPrice(DELIVERY_FEE),
+        totalText: formatPrice(total),
+    };
+}
+
+
+function updateCounterBasketFooter() {
+    let count = 0;
+    for (const dish of basketDishes) {
+        count += dish.amount;
+    }
+    const countBasketFooter = document.getElementById("count-basket-footer");
+    countBasketFooter.textContent = count > 0 ? count : "";
+}
+
 
 function updateMealButton(id) {
     const btn = document.getElementById(`meal-btn-${id}`);
-    if(!btn) return; // Absicherung, falls Button nocht existiert, passiert nichts, keinen Fehler
-    const amount = getBasketAmount(id);
-    btn.textContent = amount > 0 ? `Added ${amount}` : "Add to basket";
-
+    if (!btn) return;
+    btn.textContent = getMealLabel(id);
 }
-    
-function updateTotals(){ // alle Beträge im Footer mit ID's aktualisieren
-    const subtotal = calcPrice();
-    const total = subtotal + DELIVERY_FEE;
-    document.getElementById("basket-subtotal").textContent = formatPrice(subtotal);
-    document.getElementById("basket-total").textContent = formatPrice(total);
-    document.getElementById("basket-buy-text").textContent = `Buy now (${formatPrice(total)})`;
+
+
+function updateTotals() {
+    const t = getTotalsViewData();
+    document.getElementById("basket-subtotal").textContent = t.subtotalText;
+    document.getElementById("basket-total").textContent = t.totalText;
+    document.getElementById("basket-buy-text").textContent = `Buy now (${t.totalText})`;
     updateCounterBasketFooter();
 }
+
 
 function updateBasketNumbers(id) {
     const dish = basketDishes.find((d) => d.id === id); //sucht Gericht
     if (!dish) return; // Abbruch, wenn keins existiert
     if (dish.amount <= 2) { // Position des Löschen buttons oben rechts geht in beide Richtungen
-        document.getElementById(`basket-meal-${id}`).innerHTML = setTemplateBasketMealInner(dish);
+        document.getElementById(`basket-meal-${id}`).innerHTML = setTemplateBasketMealInner(getBasketMealViewData(dish));
         } else {
             document.getElementById(`basket-title-amount-${id}`).textContent = dish.amount;
             document.getElementById(`basket-amount-${id}`).textContent = dish.amount;
@@ -102,12 +131,12 @@ function updateBasketNumbers(id) {
         }
         updateTotals();
         updateMealButton(id);
-
 }
+
 
 function increaseAmount(id) {
     const dish = basketDishes.find((dish) => dish.id === id);
-if (!dish) return; // keine Fehler, wenn kein Gericht
+    if (!dish) return; // keine Fehler, wenn kein Gericht
     dish.amount++;
     updateBasketNumbers(id);
 }
@@ -115,7 +144,7 @@ if (!dish) return; // keine Fehler, wenn kein Gericht
 
 function decreaseAmount(id) {
     const dish = basketDishes.find((dish) => dish.id === id);
- if (!dish) return;
+    if (!dish) return;
     dish.amount--;
     if (dish.amount === 0) {
         basketDishes = basketDishes.filter((d) => d.id !== id);
@@ -130,6 +159,41 @@ function decreaseAmount(id) {
 function getBasketAmount(id){
     const dish = basketDishes.find((item) => item.id === id);
     return dish ? dish.amount : 0;
+}
+
+
+function getMealLabel(id) {
+    const amount = getBasketAmount(id);
+    return amount > 0 ? `Added ${amount}` : "Add to basket";
+}
+
+
+function getMealViewData(meal) {
+    return {
+        ...meal,
+        priceText: formatPrice(meal.price),
+        label: getMealLabel(meal.id),
+    };
+}
+
+
+function getCategoryTitle(category) {
+    return category.replace(/\(.*\)/, '<span class="category-size">$&</span>'); // 30cm Problem
+}
+
+
+function getBasketMealViewData(dish) { // prüfe die Summe
+    const isOnlyOne = dish.amount === 1;
+    return {
+        id: dish.id,
+        name: dish.name,
+        amount: dish.amount,
+        priceText: formatPrice(dish.price * dish.amount),
+        trashTopHtml: isOnlyOne ? "" : setTemplateTrashTop(dish.id),
+        leftAction: isOnlyOne ? "removeFromBasket" : "decreaseAmount",
+        leftIcon: isOnlyOne ? "delete.svg" : "-.svg",
+        leftAlt: isOnlyOne ? "Löschen" : "Weniger",
+    };
 }
 
 

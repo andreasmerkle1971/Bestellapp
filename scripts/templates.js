@@ -1,112 +1,90 @@
-function formatPrice(price) {
-    return new Intl.NumberFormat("de-DE", {
-        style: "currency",
-        currency: "EUR",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-    }).format(price);
-}
-
-
-function setTemplateCategory(categoryId, iconPath, category) {
-    const title = category.replace(
-        /\(.*\)/,
-        '<span class="category-size">$&</span>',
-    ); // kann jetzt separat zuweisen
+function setTemplateCategory(categoryId, iconPath, category, title) {
     return /*HTML*/ `
-            <div  id="${categoryId}-container"> 
+        <div id="${categoryId}-container">
             <div class="meal-category">
-            <img src="${iconPath}" alt="foto ${category}">
-            <h2 >${title}</h2>
+                <img src="${iconPath}" alt="foto ${category}">
+                <h2>${title}</h2>
             </div>
         </div>`;
 }
 
 
 function setTemplateMeals(meal, category) {
-    const amount = getBasketAmount(meal.id);
-    const label = amount > 0 ? `Added ${amount}` : "Add to basket";
     return /*html*/ `
         <div class="dish">
+            <div>
+                <img src="${meal.image}" alt="${meal.name}">
+            </div>
+            <div class="meal-text">
                 <div>
-                    <img src="${meal.image}" alt="${meal.name}">
+                    <h3>${meal.name}</h3>
+                    <p>${meal.description}</p>
                 </div>
-                <div class="meal-text">
-                    <div>
-                        <h3>${meal.name}</h3>
-                        <p>${meal.description}</p>
-                    </div>
-                    <div class="order">
-                        <p class="price">${formatPrice(meal.price)}</p>
-                        <button id="meal-btn-${meal.id}" onclick="addToBasket('${category}', ${meal.id})">${label}</button>
-                    </div>
+                <div class="order">
+                    <p class="price">${meal.priceText}</p>
+                    <button id="meal-btn-${meal.id}" onclick="addToBasket('${category}', ${meal.id})">${meal.label}</button>
                 </div>
+            </div>
         </div>`;
 }
 
 
-function setTemplateBasketMeals(dish) { // äußerer Rahmen des Baskets
-    return `<div class="basket-meal-card" id="basket-meal-${dish.id}">${setTemplateBasketMealInner(dish)}</div>`;
+function setTemplateBasketMeals(d) { // äußerer Rahmen des Baskets
+    return `<div class="basket-meal-card" id="basket-meal-${d.id}">${setTemplateBasketMealInner(d)}</div>`;
 }
 
-function setTemplateBasketMealInner(dish){ // innerer Bereich des Baskets, für die Aktualisierungen getrennt vom äußeren Rahmen und mit ID versehen
-    const isOnlyOne = dish.amount === 1; // Summe im Warenkorb
-    const trashTop = isOnlyOne
-        ? ""
-        : `<button class="trash-top" onclick="removeFromBasket(${dish.id})"><img src="./assets/icons/delete.svg" alt="Löschen"></button>`;
-    //linker button unten links bei der Anzahl, sonst Minuszeichen
-    const leftButton = isOnlyOne
-        ? `<button class="icon-btn" onclick="removeFromBasket(${dish.id})"><img src="./assets/icons/delete.svg" alt="Löschen"></button>`
-        : `<button class="icon-btn" onclick="decreaseAmount(${dish.id})"><img src="./assets/icons/-.svg" alt="Weniger"></button>`;
-    return `
-            <div class="basket-meal-top">
-            <span><span id="basket-title-amount-${dish.id}">${dish.amount}</span>x ${dish.name}</span>
-            ${trashTop}
-            </div>
-        <div class="basket-meal-controls">
-            <div class="basket-amount"> ${leftButton}
-                <span id="basket-amount-${dish.id}">${dish.amount}</span>
-                <button class="icon-btn" onclick="increaseAmount(${dish.id})"><img src="./assets/icons/+.svg" alt="Mehr"></button>
-                </div>
-                <span id="basket-price-${dish.id}">${formatPrice(dish.price * dish.amount)}</span>
+
+function setTemplateTrashTop(id) {
+    return /*HTML*/ `
+        <button class="trash-top" onclick="removeFromBasket(${id})">
+            <img src="./assets/icons/delete.svg" alt="Löschen">
+        </button>`;
+}
+
+
+function setTemplateBasketMealInner(d) { // innerer Bereich, getrennt für gezielte Updates
+    return /*HTML*/ `
+        <div class="basket-meal-top">
+            <span><span id="basket-title-amount-${d.id}">${d.amount}</span>x ${d.name}</span>
+            ${d.trashTopHtml}
         </div>
-        `;
+        <div class="basket-meal-controls">
+            <div class="basket-amount">
+                <button class="icon-btn" onclick="${d.leftAction}(${d.id})">
+                    <img src="./assets/icons/${d.leftIcon}" alt="${d.leftAlt}">
+                </button>
+                <span id="basket-amount-${d.id}">${d.amount}</span>
+                <button class="icon-btn" onclick="increaseAmount(${d.id})">
+                    <img src="./assets/icons/+.svg" alt="Mehr">
+                </button>
+            </div>
+            <span id="basket-price-${d.id}">${d.priceText}</span>
+        </div>`;
 }
 
 
-function updateCounterBasketFooter() {
-    let count = 0;
-    for (const dish of basketDishes) {
-        count += dish.amount;
-    }
-    const countBasketFooter = document.getElementById("count-basket-footer");
-    countBasketFooter.textContent = count > 0 ? count : "";
-}
-
-
-function setTemplateOrderTotal(totalPrice) {
-    return `
+function setTemplateOrderTotal(t) {
+    return /*HTML*/ `
     <div class="basket-footer">
         <div class="basket-total">
             <div class="total-order-section">
-            <span>Subtotal:</span>
-            <span id="basket-subtotal">${formatPrice(totalPrice)}</span>
+                <span>Subtotal:</span>
+                <span id="basket-subtotal">${t.subtotalText}</span>
             </div>
             <div class="total-order-section">
-            <span>Delivery fee:</span>
-            <span>${formatPrice(DELIVERY_FEE)}</span>
+                <span>Delivery fee:</span>
+                <span>${t.deliveryText}</span>
             </div>
-                    <hr> 
-                        <div class="total-order-section total-price">
-                            <strong>Total:</strong>
-                            <strong id="basket-total">${formatPrice(totalPrice + DELIVERY_FEE)}</strong>
-                        </div>
+            <hr>
+            <div class="total-order-section total-price">
+                <strong>Total:</strong>
+                <strong id="basket-total">${t.totalText}</strong>
             </div>
-            <div onclick="order()" class="order-button">
-                <p id="basket-buy-text">Buy now (${formatPrice(totalPrice + DELIVERY_FEE)})</p>
         </div>
-    </div>
-        `;
+        <div onclick="order()" class="order-button">
+            <p id="basket-buy-text">Buy now (${t.totalText})</p>
+        </div>
+    </div>`;
 }
 
 
